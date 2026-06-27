@@ -45,10 +45,10 @@ a{color:inherit}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;justify-self:start}
 .brand .mark{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm);display:inline-flex;flex:none}
 .brand .word{font-size:21px;font-weight:500;letter-spacing:-.7px}
-.nav{display:flex;align-items:center;gap:36px;grid-column:2}
-.nav a{font-size:16px;font-weight:500;letter-spacing:-.18px;text-decoration:none}
+.nav{display:flex;align-items:center;gap:40px;grid-column:2}
+.nav a{font-size:18px;font-weight:500;letter-spacing:-.18px;text-decoration:none}
 .nav a:hover{text-decoration:underline;text-underline-offset:4px}
-.nav-cta{grid-column:3;justify-self:end}
+.nav-cta{grid-column:3;justify-self:end;padding:14px 22px;font-size:16px}
 
 /* ===== Hero ===== */
 .hero{position:relative;overflow:hidden;padding:70px 0 96px}
