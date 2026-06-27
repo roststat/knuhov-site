@@ -14,6 +14,10 @@ body{
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 .container{max-width:var(--maxw);margin:0;padding:0 100px;width:100%}
+/* Симметричный паддинг вместо центрированной коробки — для блоков
+   с центрированным контентом: левый край = правый край = 100px,
+   поэтому контент одновременно "слева 100px" и "по центру экрана". */
+.container--wide{max-width:none}
 section{padding:110px 0}
 h1,h2,h3{font-weight:500;letter-spacing:-1px;line-height:1.05}
 h1{font-size:clamp(34px,6vw,56px);letter-spacing:-1.6px}
@@ -149,7 +153,7 @@ body.popup-locked{overflow:hidden}
 .manifesto .sig{margin-top:24px;color:var(--muted);font-size:15px}
 .manifesto--center{text-align:center;background:var(--ink);color:var(--paper);
   border-radius:0 0 0 24px;overflow:hidden}
-.manifesto--center .container{display:flex;flex-direction:column;align-items:center;margin:0 auto}
+.manifesto--center .container{display:flex;flex-direction:column;align-items:center}
 .manifesto--center p{font-size:clamp(26px,3.2vw,38px);max-width:780px;margin:0 auto}
 .manifesto--center .sig{margin-top:28px;color:rgba(255,255,255,.6);font-size:13px;
   font-weight:500;letter-spacing:.12em}
@@ -160,7 +164,6 @@ body.popup-locked{overflow:hidden}
 
 /* ===== Быстрая диагностика (карточки-продукты) ===== */
 .benefits{background:var(--paper)}
-.benefits .container{margin:0 auto}
 .benefits_content{display:flex;flex-direction:column;row-gap:48px}
 .diag-grid{margin-top:0}
 .diag-grid .product-card{background:#f4f4f4}
