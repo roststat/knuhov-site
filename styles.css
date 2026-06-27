@@ -194,7 +194,7 @@ body.popup-locked{overflow:hidden}
 .footer-col--right{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between;
   padding-left:250px;min-width:0}
 .footer-col--nav{display:flex;flex-direction:column}
-.fnav{display:flex;flex-direction:column;gap:20px;font-size:23px;font-weight:500}
+.fnav{display:flex;flex-direction:column;gap:20px;font-size:23px;font-weight:500;line-height:1.1}
 .fnav a{text-decoration:none}
 .fnav a:hover{text-decoration:underline;text-underline-offset:4px}
 .social{display:flex;gap:18px;margin-top:32px}
@@ -207,7 +207,7 @@ body.popup-locked{overflow:hidden}
   border-color:var(--paper);color:var(--paper);background:transparent;font-size:18px}
 .footer .help:hover{background:var(--paper);color:var(--ink)}
 
-.footer-bottom{border-top:1px solid var(--hair-on-dark);padding-top:18px;padding-bottom:18px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:18px;color:rgba(255,255,255,.6)}
+.footer-bottom{border-top:1px solid var(--hair-on-dark);padding-top:18px;padding-bottom:18px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:18px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.04em}
 .footer-bottom .sqdot{background:rgba(255,255,255,.6)}
 
 /* ===== Адаптив ===== */
