@@ -3,7 +3,7 @@
   --ink:#000; --paper:#fff; --muted:#555; --line:#000;
   --hair:rgba(0,0,0,.12); --hair-on-dark:rgba(255,255,255,.22);
   --radius:0 0 24px 0; --radius-sm:0 0 12px 0; --radius-xs:0 0 8px 0;
-  --header-h:5rem; --maxw:1160px;
+  --header-h:4.375rem; --maxw:1160px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -31,6 +31,11 @@ a{color:inherit}
 .lead{font-size:20px;color:var(--muted);max-width:520px;line-height:1.55}
 .kicker{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
+/* ===== Фирменный знак: мозаика квадратов (лого, цитаты) ===== */
+.mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;flex:none}
+.mosaic span{background:currentColor}
+.mosaic .tall{grid-row:1 / span 2}
+
 /* ===== Кнопки: фирменный угол ===== */
 .btn{display:inline-flex;align-items:center;gap:28px;font:500 17px/1 'Space Grotesk',sans-serif;
   border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;cursor:pointer;
@@ -47,9 +52,15 @@ a{color:inherit}
   z-index:100;display:flex;align-items:center}
 .site-header .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
   max-width:none;width:100%;padding:0 1.5rem}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;justify-self:start}
-.brand .mark{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm);display:inline-flex;flex:none}
-.brand .word{font-size:21px;font-weight:500;letter-spacing:-.7px}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;justify-self:start}
+.brand .mark{width:34px;height:34px;gap:4px;color:var(--ink)}
+.brand-text{display:flex;align-items:center;gap:11px}
+.brand-kicker{font-size:19px;font-weight:500;letter-spacing:.04em;color:var(--muted)}
+.brand-dr{color:#d02026}
+.brand-domain{font-size:21px;font-weight:500;letter-spacing:-.7px;color:var(--ink)}
+.brand .mark--light{color:var(--paper)}
+.brand-kicker--light{color:rgba(255,255,255,.6)}
+.brand-domain--light{color:var(--paper)}
 .nav{display:flex;align-items:center;gap:40px;grid-column:2}
 .nav a{font-size:19px;font-weight:500;letter-spacing:-.18px;text-decoration:none}
 .nav a:hover{text-decoration:underline;text-underline-offset:4px}
@@ -156,10 +167,7 @@ body.popup-locked{overflow:hidden}
 .manifesto--center p{font-size:clamp(28px,3.4vw,40px);max-width:780px;margin:0 auto}
 .manifesto--center .sig{margin-top:28px;color:rgba(255,255,255,.6);font-size:13px;
   font-weight:500;letter-spacing:.12em}
-.quote-mark{display:grid;grid-template-columns:14px 14px;grid-template-rows:14px 14px;
-  gap:3px;margin-bottom:32px}
-.quote-mark span{background:var(--paper)}
-.quote-mark .tall{grid-row:1 / span 2}
+.quote-mark{width:31px;height:31px;gap:3px;margin-bottom:32px;color:var(--paper)}
 
 /* ===== Быстрая диагностика (карточки-продукты) ===== */
 .benefits{background:var(--paper)}
@@ -180,7 +188,7 @@ body.popup-locked{overflow:hidden}
 /* -- левая колонка: лого, текст, крупная ссылка -- */
 .footer-col--about{display:flex;flex-direction:column;justify-content:space-between;
   flex:1 1 380px;max-width:480px}
-.footer-col--about .footer-logo{margin-bottom:0}
+.brand--footer{margin-bottom:0}
 .footer-col--about p{font-size:20px;line-height:1.6;color:rgba(255,255,255,.75);max-width:420px}
 .footer-col--about .footer-thanks{margin-top:0;font-size:16px;color:rgba(255,255,255,.5)}
 .big-link{margin-top:0;text-decoration:none;color:var(--paper)}
@@ -260,5 +268,3 @@ body.popup-locked{overflow:hidden}
 .kl-word{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:90px;letter-spacing:-3px}
 .kl-dr{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:26px}
 .kl-rest{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:26px;letter-spacing:.5px}
-.brand-logo{height:44px;width:auto;display:block}
-.footer-logo{height:60px;width:auto;display:block}
