@@ -142,6 +142,26 @@ a{color:inherit}
 .quote-mark span{background:var(--paper)}
 .quote-mark .tall{grid-row:1 / span 2}
 
+/* ===== Преимущества ===== */
+.benefits{background:#f4f4f4}
+.benefits_content{display:flex;flex-direction:column;row-gap:60px}
+.benefits_list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px 40px;
+  list-style:none;padding-left:0;margin:0}
+.benefits_item{display:flex;flex-direction:column;align-items:flex-start;row-gap:24px}
+.benefits_item-icon{display:flex;align-items:center;justify-content:center;
+  width:126px;height:144px;background:var(--paper);border:1px solid var(--line);
+  border-radius:0 0 24px 0;flex:none}
+.bi-dot{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm)}
+.benefits_item-text{display:flex;flex-direction:column;row-gap:8px;margin-right:48px}
+.benefits_item-text p{color:var(--muted);font-size:15px;line-height:1.5}
+@media (max-width:980px){
+  .benefits_list{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .benefits_list{grid-template-columns:1fr}
+  .benefits_content{row-gap:40px}
+}
+
 /* ===== Подвал ===== */
 .footer{background:var(--ink);color:var(--paper);border-radius:24px 0 0 0;overflow:hidden;
   min-height:100vh;display:flex;flex-direction:column}
