@@ -59,6 +59,22 @@ a{color:inherit}
 .hero-bars{position:absolute;right:-10px;bottom:0;display:flex;gap:9px;align-items:flex-end;pointer-events:none}
 .hero-bars i{display:block;width:18px;background:#ededed;border-left:.5px solid #e2e2e2}
 
+/* ===== Попап ===== */
+.popup{position:fixed;inset:0;z-index:200;display:none}
+.popup.is-open{display:block}
+.popup_overlay{position:absolute;inset:0;background:rgba(0,0,0,.6)}
+.popup_panel{position:relative;max-width:900px;width:calc(100% - 48px);margin:64px auto;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  max-height:calc(100vh - 128px);overflow-y:auto;padding:40px}
+.popup_close{position:absolute;top:20px;right:20px;width:40px;height:40px;display:flex;
+  align-items:center;justify-content:center;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius-sm);cursor:pointer}
+.popup_close:hover{background:var(--ink);color:var(--paper)}
+body.popup-locked{overflow:hidden}
+@media (max-width:620px){
+  .popup_panel{padding:28px;margin:32px auto;max-height:calc(100vh - 64px)}
+}
+
 /* ===== Маршрутизатор (монохром) ===== */
 .router-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
 .layers{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
@@ -142,25 +158,13 @@ a{color:inherit}
 .quote-mark span{background:var(--paper)}
 .quote-mark .tall{grid-row:1 / span 2}
 
-/* ===== Преимущества ===== */
+/* ===== Быстрая диагностика (карточки-продукты) ===== */
 .benefits{background:#f4f4f4}
-.benefits_content{display:flex;flex-direction:column;row-gap:60px}
-.benefits_list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px 40px;
-  list-style:none;padding-left:0;margin:0}
-.benefits_item{display:flex;flex-direction:column;align-items:flex-start;row-gap:24px}
-.benefits_item-icon{display:flex;align-items:center;justify-content:center;
-  width:126px;height:144px;background:var(--paper);border:1px solid var(--line);
-  border-radius:0 0 24px 0;flex:none}
+.benefits_content{display:flex;flex-direction:column;row-gap:48px}
+.diag-grid{margin-top:0}
+.card-visual{height:160px;display:flex;align-items:center;justify-content:center;
+  background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 0}
 .bi-dot{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm)}
-.benefits_item-text{display:flex;flex-direction:column;row-gap:8px;margin-right:48px}
-.benefits_item-text p{color:var(--muted);font-size:15px;line-height:1.5}
-@media (max-width:980px){
-  .benefits_list{grid-template-columns:1fr 1fr}
-}
-@media (max-width:620px){
-  .benefits_list{grid-template-columns:1fr}
-  .benefits_content{row-gap:40px}
-}
 
 /* ===== Подвал ===== */
 .footer{background:var(--ink);color:var(--paper);border-radius:24px 0 0 0;overflow:hidden;

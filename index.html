@@ -34,7 +34,7 @@
       <div class="eyebrow"><span>Кнухов консалтинг</span><span class="sqdot"></span><span>стратегический аудит для клиник</span></div>
       <h1>Изнутри клиники не видно, где она теряет деньги</h1>
       <p class="lead">Кажется, что дело в рекламе. Почти всегда потеря глубже — и дороже. Проверим за минуту, где у вас разрыв.</p>
-      <a class="btn" href="#router">Пройти диагностику
+      <a class="btn" href="#" data-popup-open="router-popup">Пройти диагностику
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
@@ -60,62 +60,48 @@
   <section class="benefits">
     <div class="container">
       <div class="benefits_content">
-        <h2>Что входит в подход (TODO)</h2>
-        <ul class="benefits_list">
-          <li class="benefits_item">
-            <div class="benefits_item-icon"><span class="bi-dot" aria-hidden="true"></span></div>
-            <div class="benefits_item-text">
-              <h3>Преимущество 1 (TODO)</h3>
-              <p>Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
+        <h2 style="text-align:center">Быстрая диагностика клиники (TODO)</h2>
+        <div class="product-grid diag-grid">
+          <a class="product-card" href="#" data-popup-open="router-popup">
+            <div class="card-visual" aria-hidden="true">
+              <span class="bi-dot"></span>
             </div>
-          </li>
-          <li class="benefits_item">
-            <div class="benefits_item-icon"><span class="bi-dot" aria-hidden="true"></span></div>
-            <div class="benefits_item-text">
-              <h3>Преимущество 2 (TODO)</h3>
-              <p>Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
+            <h3>Быстрая диагностика</h3>
+            <p class="pc-sub">Отметьте мысли о клинике — покажем, на каком слое теряются деньги.</p>
+            <span class="pc-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+          <div class="product-card">
+            <div class="card-visual" aria-hidden="true">
+              <span class="bi-dot"></span>
             </div>
-          </li>
-          <li class="benefits_item">
-            <div class="benefits_item-icon"><span class="bi-dot" aria-hidden="true"></span></div>
-            <div class="benefits_item-text">
-              <h3>Преимущество 3 (TODO)</h3>
-              <p>Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
+            <h3>Продукт диагностики 2 (TODO)</h3>
+            <p class="pc-sub">Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
+          </div>
+          <div class="product-card">
+            <div class="card-visual" aria-hidden="true">
+              <span class="bi-dot"></span>
             </div>
-          </li>
-          <li class="benefits_item">
-            <div class="benefits_item-icon"><span class="bi-dot" aria-hidden="true"></span></div>
-            <div class="benefits_item-text">
-              <h3>Преимущество 4 (TODO)</h3>
-              <p>Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
-            </div>
-          </li>
-          <li class="benefits_item">
-            <div class="benefits_item-icon"><span class="bi-dot" aria-hidden="true"></span></div>
-            <div class="benefits_item-text">
-              <h3>Преимущество 5 (TODO)</h3>
-              <p>Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
-            </div>
-          </li>
-          <li class="benefits_item">
-            <div class="benefits_item-icon"><span class="bi-dot" aria-hidden="true"></span></div>
-            <div class="benefits_item-text">
-              <h3>Преимущество 6 (TODO)</h3>
-              <p>Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
-            </div>
-          </li>
-        </ul>
+            <h3>Продукт диагностики 3 (TODO)</h3>
+            <p class="pc-sub">Текст-заглушка, формулировку финализирует Ислам (TODO).</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Маршрутизатор заблуждений ===== -->
-  <section id="router">
-    <div class="container">
+  <!-- ===== Маршрутизатор заблуждений (попап) ===== -->
+  <div class="popup" id="router-popup" aria-hidden="true">
+    <div class="popup_overlay" data-popup-close></div>
+    <div class="popup_panel" role="dialog" aria-modal="true" aria-labelledby="router-title">
+      <button class="popup_close" type="button" aria-label="Закрыть" data-popup-close>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
       <div class="router-head">
         <div>
           <div class="kicker">Маршрутизатор</div>
-          <h2>Что из этого звучит у вас в голове?</h2>
+          <h2 id="router-title">Что из этого звучит у вас в голове?</h2>
         </div>
         <p class="lead" style="margin:0">Отметьте мысли, которые звучат, когда вы думаете о росте клиники. Покажем, на каком слое на самом деле теряются деньги.</p>
       </div>
@@ -134,7 +120,7 @@
       </div>
       <div class="verdict idle" id="verdict">Отметьте хотя бы одну мысль выше — и здесь появится разбор.</div>
     </div>
-  </section>
+  </div>
 
   <!-- ===== Где клиника теряет деньги ===== -->
   <section id="loss">
@@ -298,7 +284,7 @@
       <p>Стратегический рост медицинского бизнеса. Находим, где клиника теряет деньги, и достраиваем систему.</p>
       <div class="thanks">Спасибо команде, которая внедряет это в клиниках.</div>
     </div>
-    <a class="big-link" href="index.html#router">Пройти<br>диагностику<span class="ul"></span></a>
+    <a class="big-link" href="#" data-popup-open="router-popup">Пройти<br>диагностику<span class="ul"></span></a>
     <nav class="fnav">
       <a href="index.html#method">Метод</a>
       <a href="produkty.html">Продукты</a>
@@ -320,6 +306,40 @@
 </footer>
 
 <script>
+(function(){
+  /* ===== Попапы ===== */
+  function openPopup(id){
+    var p=document.getElementById(id);
+    if(!p)return;
+    p.classList.add('is-open');
+    p.setAttribute('aria-hidden','false');
+    document.body.classList.add('popup-locked');
+  }
+  function closePopup(p){
+    p.classList.remove('is-open');
+    p.setAttribute('aria-hidden','true');
+    document.body.classList.remove('popup-locked');
+  }
+  document.addEventListener('click',function(e){
+    var opener=e.target.closest('[data-popup-open]');
+    if(opener){
+      e.preventDefault();
+      openPopup(opener.dataset.popupOpen);
+      return;
+    }
+    var closer=e.target.closest('[data-popup-close]');
+    if(closer){
+      e.preventDefault();
+      closePopup(closer.closest('.popup'));
+    }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      var open=document.querySelector('.popup.is-open');
+      if(open)closePopup(open);
+    }
+  });
+})();
 (function(){
   /* ===== Маршрутизатор заблуждений (монохром, без сбора контактов) ===== */
   var LAYERS=[['decisions','Решения'],['base','База / аналитика'],['service','Сервис'],['product','Продукт / врач'],['traffic','Маркетинг'],['strategy','Стратегия']];
