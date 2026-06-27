@@ -133,7 +133,7 @@ a{color:inherit}
 .manifesto .sig{margin-top:24px;color:var(--muted);font-size:15px}
 .manifesto--center{text-align:center;background:var(--ink);color:var(--paper);
   border-radius:0 0 0 24px;overflow:hidden}
-.manifesto--center .container{display:flex;flex-direction:column;align-items:center}
+.manifesto--center .container{display:flex;flex-direction:column;align-items:center;margin:0 auto}
 .manifesto--center p{font-size:clamp(26px,3.2vw,38px);max-width:780px;margin:0 auto}
 .manifesto--center .sig{margin-top:28px;color:rgba(255,255,255,.6);font-size:13px;
   font-weight:500;letter-spacing:.12em}
