@@ -133,7 +133,7 @@ a{color:inherit}
 .manifesto .sig{margin-top:24px;color:var(--muted);font-size:15px}
 
 /* ===== Подвал ===== */
-.footer{background:var(--ink);color:var(--paper)}
+.footer{background:var(--ink);color:var(--paper);border-radius:24px 0 0 0;overflow:hidden}
 .mosaic{display:flex;gap:6px}
 .mosaic span{flex:1;height:18px;background:var(--paper)}
 .footer-body{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding:44px 0}
