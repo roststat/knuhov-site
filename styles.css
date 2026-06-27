@@ -13,7 +13,7 @@ body{
   line-height:1.5; padding-top:var(--header-h);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-.container{max-width:var(--maxw);margin:0;padding:0 80px;width:100%}
+.container{max-width:var(--maxw);margin:0;padding:0 100px;width:100%}
 section{padding:110px 0}
 h1,h2,h3{font-weight:500;letter-spacing:-1px;line-height:1.05}
 h1{font-size:clamp(34px,6vw,56px);letter-spacing:-1.6px}
@@ -28,7 +28,7 @@ a{color:inherit}
 
 /* ===== Кнопки: фирменный угол ===== */
 .btn{display:inline-flex;align-items:center;gap:28px;font:500 17px/1 'Space Grotesk',sans-serif;
-  border:1px solid var(--line);border-radius:var(--radius);padding:19px 26px;cursor:pointer;
+  border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;cursor:pointer;
   background:var(--paper);color:var(--ink);text-decoration:none;transition:background .18s,color .18s}
 .btn svg{flex:none}
 .btn:hover{background:var(--ink);color:var(--paper)}
@@ -51,7 +51,8 @@ a{color:inherit}
 .nav-cta{grid-column:3;justify-self:end;padding:14px 22px;font-size:16px}
 
 /* ===== Hero ===== */
-.hero{position:relative;overflow:hidden;padding:70px 0 96px}
+.hero{position:relative;overflow:hidden;min-height:calc(100vh - var(--header-h));
+  display:flex;align-items:center;padding:70px 0 96px}
 .hero h1{max-width:640px;margin-top:20px}
 .hero .lead{margin:22px 0 0}
 .hero .btn{margin-top:36px}
@@ -156,6 +157,7 @@ a{color:inherit}
 @media (max-width:820px){
   section{padding:72px 0}
   .container{padding:0 1.5rem}
+  .hero,.phero{align-items:flex-start}
   .nav,.nav-cta{display:none}
   .site-header .container{grid-template-columns:1fr}
   .roadmap,.audit{grid-template-columns:1fr;gap:28px}
@@ -166,7 +168,7 @@ a{color:inherit}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 /* ===== Продуктовые лендинги ===== */
-.phero{padding:60px 0 80px}
+.phero{min-height:calc(100vh - var(--header-h));display:flex;align-items:center;padding:60px 0 80px}
 .phero h1{max-width:680px;margin-top:20px}
 .phero .price-hint{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-weight:500}
 .for-whom{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px}
