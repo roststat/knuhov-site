@@ -160,6 +160,7 @@ body.popup-locked{overflow:hidden}
 
 /* ===== Быстрая диагностика (карточки-продукты) ===== */
 .benefits{background:var(--paper)}
+.benefits .container{margin:0 auto}
 .benefits_content{display:flex;flex-direction:column;row-gap:48px}
 .diag-grid{margin-top:0}
 .diag-grid .product-card{background:#f4f4f4}
