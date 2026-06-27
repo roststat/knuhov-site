@@ -167,7 +167,7 @@ body.popup-locked{overflow:hidden}
 .benefits_content{display:flex;flex-direction:column;row-gap:48px}
 .diag-grid{margin-top:0}
 .diag-grid .product-card{background:#f4f4f4}
-.card-visual{height:160px;display:flex;align-items:center;justify-content:center;
+.card-visual{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
   background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 0}
 .bi-dot{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm)}
 
