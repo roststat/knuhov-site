@@ -3,7 +3,7 @@
   --ink:#000; --paper:#fff; --muted:#555; --line:#000;
   --hair:rgba(0,0,0,.12); --hair-on-dark:rgba(255,255,255,.22);
   --radius:0 0 24px 0; --radius-sm:0 0 12px 0; --radius-xs:0 0 8px 0;
-  --header-h:90px; --maxw:1160px;
+  --header-h:5rem; --maxw:1160px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -13,7 +13,7 @@ body{
   line-height:1.5; padding-top:var(--header-h);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 2.5rem;width:100%}
 section{padding:110px 0}
 h1,h2,h3{font-weight:500;letter-spacing:-1px;line-height:1.05}
 h1{font-size:clamp(34px,6vw,56px);letter-spacing:-1.6px}
@@ -41,7 +41,7 @@ a{color:inherit}
   background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
   z-index:100;display:flex;align-items:center}
 .site-header .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  max-width:none;width:100%;padding:0 32px}
+  max-width:none;width:100%;padding:0 1.5rem}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;justify-self:start}
 .brand .mark{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm);display:inline-flex;flex:none}
 .brand .word{font-size:21px;font-weight:500;letter-spacing:-.7px}
@@ -195,5 +195,5 @@ a{color:inherit}
 .kl-word{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:90px;letter-spacing:-3px}
 .kl-dr{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:26px}
 .kl-rest{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:26px;letter-spacing:.5px}
-.brand-logo{height:52px;width:auto;display:block}
+.brand-logo{height:44px;width:auto;display:block}
 .footer-logo{height:60px;width:auto;display:block}
