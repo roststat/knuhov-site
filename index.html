@@ -103,15 +103,18 @@
             <span class="pc-tag">Диагностика</span>
             <h3>Стратегический аудит</h3>
             <p class="pc-sub">Диагностика покажет, в каком слое разрыв. Аудит — это 2-3 часа лично с Исламом, чтобы превратить находку в конкретный план роста.</p>
-            <p class="pc-price">От 25 000 ₽ <span class="pc-price-note">(зависит от сложности, уточняйте)</span></p>
+            <p class="pc-price">От 25 000 ₽</p>
           </a>
-          <a class="product-card" href="#">
+          <div class="product-card">
             <div class="card-visual" aria-hidden="true">
               <span class="bi-dot"></span>
             </div>
             <span class="pc-tag">Техническое обслуживание</span>
             <h3>Техническое обслуживание</h3>
-          </a>
+            <a class="btn pc-action" href="#">ПЕРЕЙТИ В РАЗДЕЛ
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
         </div>
         <!-- Тонкая строка-якорь: три направления консалтинга, активно сейчас только «Диагностика» -->
         <div class="directions" aria-label="Направления консалтинга">
@@ -240,6 +243,17 @@
 </footer>
 
 <script>
+(function(){
+  /* ===== Мигание кнопки «Перейти в раздел» по клику ===== */
+  document.querySelectorAll('.pc-action').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btn.classList.remove('is-blinking');
+      void btn.offsetWidth;
+      btn.classList.add('is-blinking');
+    });
+    btn.addEventListener('animationend',function(){btn.classList.remove('is-blinking');});
+  });
+})();
 (function(){
   /* ===== Попапы ===== */
   function resetDiagnostic(){

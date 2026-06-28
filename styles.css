@@ -55,12 +55,26 @@ a{color:inherit}
 .brand{display:flex;align-items:center;gap:13px;text-decoration:none;justify-self:start}
 .brand .mark{width:34px;height:34px;gap:4px;color:var(--ink)}
 .brand-text{display:flex;align-items:center;gap:11px}
-.brand-kicker{font-size:19px;font-weight:500;letter-spacing:.04em;color:var(--muted)}
+.brand-kicker{font-size:19px;font-weight:500;letter-spacing:.04em;color:var(--muted);
+  display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;
+  border-right:2px solid var(--muted);
+  animation:brand-type 4.5s infinite, brand-caret .9s step-end infinite}
 .brand-dr{color:#d02026}
 .brand-domain{font-size:21px;font-weight:500;letter-spacing:-.7px;color:var(--ink)}
 .brand .mark--light{color:var(--paper)}
-.brand-kicker--light{color:rgba(255,255,255,.6)}
+.brand-kicker--light{color:rgba(255,255,255,.6);border-right-color:rgba(255,255,255,.6)}
 .brand-domain--light{color:var(--paper)}
+@keyframes brand-type{
+  0%{width:0;animation-timing-function:steps(13,end)}
+  35%{width:13ch;animation-timing-function:linear}
+  65%{width:13ch;animation-timing-function:steps(13,end)}
+  95%{width:0}
+  100%{width:0}
+}
+@keyframes brand-caret{50%{border-color:transparent}}
+@media (prefers-reduced-motion:reduce){
+  .brand-kicker{animation:none;width:13ch;border-right:none}
+}
 .nav{display:flex;align-items:center;gap:40px;grid-column:2}
 .nav a{font-size:19px;font-weight:500;letter-spacing:-.18px;text-decoration:none}
 .nav a:hover{text-decoration:underline;text-underline-offset:4px}
@@ -201,9 +215,12 @@ body.popup-locked{overflow:hidden}
   font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
   padding:6px 12px;border-radius:var(--radius-xs)}
 .pc-price{font-size:26px;font-weight:500;letter-spacing:-.5px;margin-top:auto}
-.pc-price-note{font-size:13px;font-weight:400;color:var(--muted)}
 .bi-dot{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm)}
 .pc-proof{font-size:13px;color:var(--muted);line-height:1.5}
+.pc-action{margin-top:auto;height:70px;justify-content:space-between}
+.pc-action:hover{background:var(--paper);color:var(--ink)}
+.pc-action.is-blinking{animation:pc-blink .25s steps(1) 2}
+@keyframes pc-blink{50%{background:var(--ink);color:var(--paper)}}
 
 /* ===== Тултип на слове «слой» ===== */
 .layer-tip{position:relative;border-bottom:1px dashed var(--ink);cursor:help;font-weight:500}
@@ -286,7 +303,7 @@ body.popup-locked{overflow:hidden}
 .stat b{font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:-1.5px;display:block;line-height:1}
 .stat span{color:var(--muted);font-size:14px}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:32px}
-.product-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;transition:background .18s,color .18s}
+.product-card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:background .18s,color .18s}
 .product-card:hover{background:var(--ink);color:var(--paper)}
 .product-card h3{font-size:23px}
 .product-card .pc-sub{color:var(--muted);font-size:14px;flex:1}
