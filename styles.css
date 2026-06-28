@@ -197,8 +197,12 @@ body.popup-locked{overflow:hidden}
 .diag-grid .product-card:hover .pc-sub{color:var(--muted)}
 .card-visual{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
   background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 0}
+.pc-tag{display:inline-flex;align-self:flex-start;background:#e4e4e4;color:var(--muted);
+  font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
+  padding:6px 12px;border-radius:var(--radius-xs)}
+.pc-price{font-size:26px;font-weight:500;letter-spacing:-.5px;margin-top:auto}
+.pc-price-note{font-size:13px;font-weight:400;color:var(--muted)}
 .bi-dot{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm)}
-.product-card .btn{margin-top:auto;align-self:flex-start}
 .pc-proof{font-size:13px;color:var(--muted);line-height:1.5}
 
 /* ===== Тултип на слове «слой» ===== */
