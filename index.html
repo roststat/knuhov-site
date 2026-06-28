@@ -94,13 +94,6 @@
                 </span></span>
                 теряете деньги.
               </p>
-              <div class="pc-done" id="pc-done" hidden>
-                <span class="pc-done-check" aria-hidden="true">✓</span>
-                <span id="pc-done-text">Диагностика пройдена</span>
-                <button type="button" class="btn btn--sm" id="pc-done-view">Смотреть результат
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </button>
-              </div>
             </div>
             <p class="pc-price">Бесплатно</p>
           </a>
@@ -112,10 +105,6 @@
               <span class="pc-tag">Диагностика</span>
               <h3>Стратегический аудит</h3>
               <p class="pc-sub">Диагностика покажет, в каком слое разрыв. Аудит — это 2-3 часа лично с Исламом, чтобы превратить находку в конкретный план роста.</p>
-              <div class="pc-attached" id="pc-attached" hidden>
-                <span id="pc-attached-text">Диагностика прикреплена</span>
-                <button type="button" id="pc-attached-remove" aria-label="Убрать результат">✕</button>
-              </div>
             </div>
             <p class="pc-price">От 25 000 ₽</p>
           </a>
@@ -552,8 +541,6 @@
 
     renderResult(lastResult);
     showStep('result');
-    sessionStorage.setItem('knuhov_diagnostic_result',JSON.stringify(lastResult));
-    applyDoneBadge();
     window.track('diagnostic_completed',{system_type:systemType,weak_layers:lastResult.weak_layers});
   }
 
@@ -570,37 +557,6 @@
     weakListEl.innerHTML=data.weak_layers.map(function(w){return '<li>'+w+'</li>';}).join('');
     hypListEl.innerHTML=data.audit_hypotheses.map(function(h){return '<li>'+h+'</li>';}).join('');
   }
-
-  /* ===== Бейдж «Диагностика пройдена» на карточке экспресс-диагностики ===== */
-  var pcDone=document.getElementById('pc-done');
-  var pcDoneText=document.getElementById('pc-done-text');
-  function applyDoneBadge(){
-    var saved=sessionStorage.getItem('knuhov_diagnostic_result');
-    if(!saved||!pcDone)return;
-    try{
-      var data=JSON.parse(saved);
-      pcDoneText.textContent='Пройдено · '+data.system_type;
-      pcDone.hidden=false;
-    }catch(e){}
-  }
-  var pcDoneView=document.getElementById('pc-done-view');
-  if(pcDoneView){
-    pcDoneView.addEventListener('click',function(e){
-      e.preventDefault();e.stopPropagation();
-      var saved=sessionStorage.getItem('knuhov_diagnostic_result');
-      if(!saved)return;
-      var data;
-      try{data=JSON.parse(saved);}catch(err){return;}
-      lastResult=data;
-      renderResult(data);
-      diagPopup.classList.add('is-open');
-      diagPopup.setAttribute('aria-hidden','false');
-      document.body.classList.add('popup-locked');
-      showStep('result');
-      window.track('diagnostic_view_result_from_card',{});
-    });
-  }
-  applyDoneBadge();
 
   /* ===== CTA на аудит ===== */
   document.getElementById('diag-audit-cta').addEventListener('click',function(){
@@ -660,17 +616,6 @@
   });
 
   /* ===== Прикрепить результат к заявке на аудит (без бэкенда — заглушка через sessionStorage) ===== */
-  var pcAttached=document.getElementById('pc-attached');
-  var pcAttachedText=document.getElementById('pc-attached-text');
-  function applyAttachedBadge(){
-    var saved=sessionStorage.getItem('knuhov_diagnostic_attached');
-    if(!saved||!pcAttached)return;
-    try{
-      var data=JSON.parse(saved);
-      pcAttachedText.textContent='Диагностика прикреплена · '+data.system_type;
-      pcAttached.hidden=false;
-    }catch(e){}
-  }
   var attachCheckbox=document.getElementById('diag-attach-checkbox');
   attachCheckbox.addEventListener('change',function(){
     if(!lastResult)return;
@@ -678,22 +623,11 @@
       sessionStorage.setItem('knuhov_diagnostic_attached',JSON.stringify(lastResult));
       window.track('diagnostic_attached_to_audit',{system_type:lastResult.system_type});
       showHint('Результат будет прикреплён к заявке на аудит');
-      applyAttachedBadge();
     }else{
       sessionStorage.removeItem('knuhov_diagnostic_attached');
       window.track('diagnostic_removed_from_audit',{});
-      if(pcAttached)pcAttached.hidden=true;
     }
   });
-  if(pcAttached){
-    document.getElementById('pc-attached-remove').addEventListener('click',function(e){
-      e.preventDefault();e.stopPropagation();
-      sessionStorage.removeItem('knuhov_diagnostic_attached');
-      window.track('diagnostic_removed_from_audit',{});
-      pcAttached.hidden=true;
-    });
-  }
-  applyAttachedBadge();
 
   resetState();
 })();

@@ -186,19 +186,6 @@ body.popup-locked{overflow:hidden}
   .diag-print .dp-cta{margin-top:16px;font-weight:500}
 }
 
-/* ===== Бейдж «диагностика прикреплена» на карточке аудита ===== */
-.pc-attached{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  border:1px solid var(--line);border-radius:var(--radius-xs);padding:8px 12px;font-size:13px;margin-top:4px}
-.pc-attached button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;padding:0}
-.pc-attached button:hover{color:var(--ink)}
-
-/* ===== Бейдж «диагностика пройдена» на карточке экспресс-диагностики ===== */
-.pc-done{display:flex;align-items:center;gap:10px;border:1px solid var(--line);
-  border-radius:var(--radius-xs);padding:8px 10px;font-size:13px;margin-top:4px}
-.pc-done-check{color:#1f9d55;font-weight:700;flex:none}
-.pc-done #pc-done-text{flex:1}
-.pc-done .btn--sm{flex:none}
-
 /* ===== Путь потерь ===== */
 .lossgrid{display:grid;grid-template-columns:1fr;gap:0;margin-top:30px;border-top:1px solid var(--hair)}
 .loss{display:grid;grid-template-columns:28px 200px 1fr;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--hair)}
