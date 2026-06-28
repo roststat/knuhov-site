@@ -110,31 +110,94 @@ body.popup-locked{overflow:hidden}
 .theory-item h3{font-size:16px;margin-bottom:6px}
 .theory-item p{font-size:13px;color:var(--muted);line-height:1.4}
 
-/* ===== Экспресс-диагностика: тест по слоям ===== */
-.layers{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.layer{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;padding:7px 12px;
-  border:1px solid var(--line);border-radius:var(--radius-xs);background:var(--paper);color:var(--ink);transition:.15s}
-.layer.on{background:var(--ink);color:var(--paper)}
-.layer b{font-weight:500;min-width:10px;text-align:center}
-.beliefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:24px}
-.belief{text-align:left;font:500 15px/1.35 'Space Grotesk',sans-serif;border:1px solid var(--line);
+/* ===== Экспресс-диагностика: пошаговый тест ===== */
+.diag-progress{margin-bottom:22px}
+.diag-progress_bar{height:4px;background:var(--hair);border-radius:2px;overflow:hidden}
+.diag-progress_fill{height:100%;background:var(--ink);transition:width .25s ease;width:0}
+.diag-progress_label{margin-top:10px;font-size:13px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.diag-question{margin-bottom:18px}
+.diag-answers{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.diag-answer{text-align:left;font:500 16px/1.35 'Space Grotesk',sans-serif;border:1px solid var(--line);
   border-radius:var(--radius-sm);background:var(--paper);color:var(--ink);padding:16px 18px;cursor:pointer;transition:.15s}
-.belief.on{background:var(--ink);color:var(--paper)}
-.diag-step [disabled]{opacity:.4;cursor:not-allowed}
-.diag-step [disabled]:hover{background:var(--paper);color:var(--ink)}
+.diag-answer:hover{border-color:var(--ink)}
+.diag-answer.is-selected{background:var(--ink);color:var(--paper)}
+.diag-quiz-nav{display:flex;justify-content:space-between;align-items:center}
+.diag-link{font:500 14px 'Space Grotesk',sans-serif;background:none;border:none;color:var(--muted);
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
+.diag-link:hover{color:var(--ink)}
+.diag-link[disabled]{opacity:.4;cursor:not-allowed;text-decoration:none}
 
 /* ===== Экспресс-диагностика: результат ===== */
-.verdict{border:1px solid var(--line);border-radius:var(--radius);padding:30px;margin-top:6px}
-.verdict.idle{color:var(--muted)}
-.verdict h3{margin-bottom:6px}
-.verdict .vsub{color:var(--muted);max-width:560px;margin-bottom:16px}
-.reframe{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-top:1px solid var(--hair);font-size:14px}
-.reframe .rl{font-weight:500}
-.tag{display:inline-block;border:1px solid var(--line);border-radius:var(--radius-xs);padding:2px 9px;font-size:11px;white-space:nowrap;margin-left:6px}
-.audit-bridge{border-top:1px solid var(--hair);margin-top:26px;padding-top:26px}
-.audit-bridge_lead{font-size:19px;font-weight:500;letter-spacing:-.3px;margin-bottom:10px}
+.diag-summary{color:var(--muted);max-width:600px;margin-bottom:24px}
+.diag-layers-report{border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-bottom:24px}
+.diag-layer-row{display:grid;grid-template-columns:160px 1fr 32px;align-items:center;gap:14px;padding:8px 0}
+.diag-layer-name{font-size:13px;color:var(--muted)}
+.diag-layer-bar{height:6px;background:var(--hair);border-radius:3px;overflow:hidden}
+.diag-layer-bar_fill{display:block;height:100%;background:var(--ink)}
+.diag-layer-score{font-size:13px;font-weight:500;text-align:right}
+.diag-block{margin-bottom:24px}
+.diag-block h3{margin-bottom:10px}
+.diag-block_title{display:flex;align-items:center;gap:8px}
+.diag-block_title svg{flex:none}
+.diag-weak-list,.diag-hyp-list{list-style:none}
+.diag-weak-list li,.diag-hyp-list li{padding:10px 0;border-top:1px solid var(--hair);font-size:15px;display:flex;gap:10px}
+.diag-weak-list li:first-child,.diag-hyp-list li:first-child{border-top:none}
+.diag-weak-list li::before{content:"●";color:var(--ink);font-size:10px;line-height:1.6}
+.diag-hyp-list li::before{content:"—";color:var(--muted)}
+.diag-result-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px}
+.diag-flatbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font:500 14px 'Space Grotesk',sans-serif;border:1px solid var(--line);border-radius:0;
+  background:var(--paper);color:var(--ink);padding:14px 18px;cursor:pointer;flex:1 1 200px;
+  transition:background .18s}
+.diag-flatbtn:hover{background:#f4f4f4}
+.diag-flatbtn svg{flex:none}
+.diag-hint{font-size:13px;color:var(--muted);margin-bottom:6px}
+.audit-bridge{border-top:1px solid var(--hair);margin-top:16px;padding-top:26px}
+.audit-bridge_quote{display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:14px;margin-bottom:28px}
+.audit-bridge_avatar{width:76px;height:76px;border-radius:50%;background:var(--ink);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:500;flex:none;overflow:hidden}
+.audit-bridge_avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.audit-bridge_lead{font-size:21px;font-weight:500;letter-spacing:-.3px;max-width:520px}
+.audit-bridge_sig{color:var(--muted);font-size:13px}
 .audit-bridge p{color:var(--muted);max-width:560px}
-.audit-bridge .btn{margin-top:20px}
+.audit-bridge_actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:20px}
+.diag-restart-link{margin-top:18px;display:inline-block}
+
+/* ===== Чекбокс «Прикрепить результат к заявке на аудит» ===== */
+.diag-attach-row{display:flex;align-items:center;gap:14px;cursor:pointer;margin:0 0 20px;
+  font-size:17px;font-weight:500}
+.diag-attach-row input{position:absolute;opacity:0;width:1px;height:1px}
+.diag-attach-check{width:30px;height:30px;border:2px solid var(--ink);border-radius:var(--radius-xs);
+  display:flex;align-items:center;justify-content:center;flex:none;color:transparent;transition:.15s}
+.diag-attach-row input:checked + .diag-attach-check{background:var(--ink);color:var(--paper)}
+
+/* ===== Печатная версия результата (PDF через печать) ===== */
+.diag-print{display:none}
+@media print{
+  body *{visibility:hidden}
+  .diag-print,.diag-print *{visibility:visible}
+  .diag-print{display:block;position:absolute;left:0;top:0;width:100%;padding:24px}
+  .diag-print h1{font-size:24px;margin-bottom:6px}
+  .diag-print h2{font-size:19px;margin:18px 0 6px}
+  .diag-print h3{font-size:15px;margin:16px 0 6px}
+  .diag-print ul{margin-left:18px}
+  .diag-print .dp-date{color:#555;font-size:13px}
+  .diag-print .dp-cta{margin-top:16px;font-weight:500}
+}
+
+/* ===== Бейдж «диагностика прикреплена» на карточке аудита ===== */
+.pc-attached{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border:1px solid var(--line);border-radius:var(--radius-xs);padding:8px 12px;font-size:13px;margin-top:4px}
+.pc-attached button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;padding:0}
+.pc-attached button:hover{color:var(--ink)}
+
+/* ===== Бейдж «диагностика пройдена» на карточке экспресс-диагностики ===== */
+.pc-done{display:flex;align-items:center;gap:10px;border:1px solid var(--line);
+  border-radius:var(--radius-xs);padding:8px 10px;font-size:13px;margin-top:4px}
+.pc-done-check{color:#1f9d55;font-weight:700;flex:none}
+.pc-done #pc-done-text{flex:1}
+.pc-done .btn--sm{flex:none}
 
 /* ===== Путь потерь ===== */
 .lossgrid{display:grid;grid-template-columns:1fr;gap:0;margin-top:30px;border-top:1px solid var(--hair)}
@@ -214,10 +277,11 @@ body.popup-locked{overflow:hidden}
 .pc-tag{display:inline-flex;align-self:flex-start;background:#e4e4e4;color:var(--muted);
   font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
   padding:6px 12px;border-radius:var(--radius-xs)}
-.pc-price{font-size:26px;font-weight:500;letter-spacing:-.5px;margin-top:auto}
+.pc-body{flex:1;display:flex;flex-direction:column;gap:8px}
+.pc-price{font-size:26px;font-weight:500;letter-spacing:-.5px;margin-top:1.5em}
 .bi-dot{width:34px;height:34px;background:var(--ink);border-radius:var(--radius-sm)}
 .pc-proof{font-size:13px;color:var(--muted);line-height:1.5}
-.pc-action{margin-top:auto;height:70px;justify-content:space-between}
+.pc-action{margin-top:1.5em;height:70px;justify-content:space-between}
 .pc-action:hover{background:var(--paper);color:var(--ink)}
 .pc-action.is-blinking{animation:pc-blink .25s steps(1) 2}
 @keyframes pc-blink{50%{background:var(--ink);color:var(--paper)}}
