@@ -88,6 +88,14 @@ a{color:inherit}
 .hero-proof{font-size:14px;color:var(--muted);line-height:1.5;margin-top:20px;max-width:480px}
 .hero .btn{margin-top:36px}
 
+/* ===== Hero: фоновое изображение ===== */
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(100deg,transparent 0,transparent 32%,#000 62%);
+  mask-image:linear-gradient(100deg,transparent 0,transparent 32%,#000 62%)}
+.hero-bg_img{width:100%;height:100%;object-fit:cover;object-position:right center;
+  filter:grayscale(1) contrast(1.05);opacity:.6}
+@media (max-width:860px){.hero-bg{display:none}}
+
 /* ===== Попап ===== */
 .popup{position:fixed;inset:0;z-index:200;display:none}
 .popup.is-open{display:block}
