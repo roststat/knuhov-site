@@ -66,14 +66,14 @@ a{color:inherit}
 .brand-domain--light{color:var(--paper)}
 @keyframes brand-type{
   0%{width:0;animation-timing-function:steps(13,end)}
-  35%{width:13ch;animation-timing-function:linear}
-  65%{width:13ch;animation-timing-function:steps(13,end)}
+  35%{width:145px;animation-timing-function:linear}
+  65%{width:145px;animation-timing-function:steps(13,end)}
   95%{width:0}
   100%{width:0}
 }
 @keyframes brand-caret{50%{border-color:transparent}}
 @media (prefers-reduced-motion:reduce){
-  .brand-kicker{animation:none;width:13ch;border-right:none}
+  .brand-kicker{animation:none;width:145px;border-right:none}
 }
 .nav{display:flex;align-items:center;gap:40px;grid-column:2}
 .nav a{font-size:19px;font-weight:500;letter-spacing:-.18px;text-decoration:none}
