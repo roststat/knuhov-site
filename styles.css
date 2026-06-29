@@ -85,7 +85,6 @@ a{color:inherit}
   display:flex;align-items:center;padding:70px 0 96px}
 .hero h1{max-width:640px;margin-top:20px}
 .hero .lead{margin:22px 0 0;max-width:600px}
-.hero-proof{font-size:14px;color:var(--muted);line-height:1.5;margin-top:20px;max-width:480px}
 .hero .btn{margin-top:36px}
 
 /* ===== Hero: фоновое изображение ===== */
@@ -94,7 +93,11 @@ a{color:inherit}
   mask-image:linear-gradient(100deg,transparent 0,transparent 52%,#000 78%)}
 .hero-bg_img{width:100%;height:100%;object-fit:cover;object-position:right center;
   filter:grayscale(1) contrast(1.05);opacity:.5}
-@media (max-width:860px){.hero-bg{display:none}}
+@media (max-width:860px){
+  .hero-bg{-webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 62%,#000 88%);
+    mask-image:linear-gradient(180deg,transparent 0,transparent 62%,#000 88%)}
+  .hero-bg_img{object-position:center 80%;opacity:.3}
+}
 
 /* ===== Попап ===== */
 .popup{position:fixed;inset:0;z-index:200;display:none}
@@ -254,6 +257,41 @@ body.popup-locked{overflow:hidden}
   font-weight:500;letter-spacing:.12em}
 .quote-mark{width:31px;height:31px;gap:3px;margin-bottom:32px;color:var(--paper)}
 
+/* ===== Опыт ===== */
+/* Сетка в три полосы — той же ширины, что у карточек каталога (repeat(3,1fr), gap:16px),
+   чтобы фото/цифры всегда выстраивались по тем же вертикалям, что карточки выше. */
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.trust-photo{grid-column:1}
+.trust-body{grid-column:span 2;padding-left:17px}
+.trust-body h2{text-wrap:balance}
+.trust-photo img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--radius)}
+.trust-caption{margin-top:12px;font-size:14px;color:var(--muted);text-align:center}
+.trust-body .lead{margin-top:14px}
+.trust-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px;
+  padding-top:32px;border-top:1px solid var(--hair)}
+.trust-stat{text-align:center}
+.trust-num{display:block;font-size:40px;font-weight:500;letter-spacing:-.5px}
+.trust-label{display:block;font-size:13px;color:var(--muted);margin:0 auto;max-width:140px}
+@media (max-width:820px){
+  .trust-grid{grid-template-columns:1fr}
+  .trust-body{grid-column:1;padding-left:0}
+  .trust-photo{width:247px;max-width:247px}
+  .trust-photo img{aspect-ratio:4/5}
+  .trust-stats{grid-template-columns:1fr;gap:28px;text-align:left}
+  .trust-stat{text-align:left}
+  .trust-label{margin:0}
+  .trust-num{font-size:48px}
+}
+
+/* ===== Как проходит аудит ===== */
+/* Стык с каталогом — тоже белое на белом, убираем верхний паддинг по той же причине. */
+.process{padding-top:0}
+.audit-steps{margin:40px 0 36px;border-top:1px solid var(--hair)}
+.step-row{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid var(--hair)}
+.step-num{flex:none;font-size:14px;font-weight:500;color:var(--muted);padding-top:3px}
+.step-text h3{font-size:18px;margin-bottom:6px}
+.step-text p{font-size:14px;color:var(--muted);line-height:1.5;max-width:520px}
+
 /* ===== Строка-якорь: три направления консалтинга ===== */
 .directions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:8px}
 .direction{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -261,7 +299,9 @@ body.popup-locked{overflow:hidden}
 .d-arrow{color:var(--muted);font-size:13px}
 
 /* ===== Быстрая диагностика (карточки-продукты) ===== */
-.benefits{background:var(--paper)}
+/* Стык с предыдущим блоком «Опыт» — оба на белом фоне, без цветовой границы,
+   поэтому стандартный двойной паддинг (110+110) читается как лишний воздух — убираем верхний. */
+.benefits{background:var(--paper);padding-top:0}
 .benefits_content{display:flex;flex-direction:column;row-gap:48px}
 .diag-grid{margin-top:0}
 .diag-grid .product-card{background:#f4f4f4;border:1px solid transparent}
@@ -321,7 +361,7 @@ body.popup-locked{overflow:hidden}
 .social a:hover{opacity:1}
 
 /* -- кнопка: ширина = 100% правого блока, то есть тянется до правой границы отступа -- */
-.footer .help{width:100%;display:flex;align-items:center;justify-content:space-between;
+.footer .help{width:100%;margin-top:48px;display:flex;align-items:center;justify-content:space-between;
   border-color:var(--paper);color:var(--paper);background:transparent;font-size:18px}
 .footer .help:hover{background:var(--paper);color:var(--ink)}
 
@@ -365,8 +405,8 @@ body.popup-locked{overflow:hidden}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:32px}
 .product-card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:background .18s,color .18s}
 .product-card:hover{background:var(--ink);color:var(--paper)}
-.product-card h3{font-size:23px}
-.product-card .pc-sub{color:var(--muted);font-size:14px;flex:1}
+.product-card h3{font-size:23px;line-height:1.2;min-height:2.4em}
+.product-card .pc-sub{color:var(--muted);font-size:14px;line-height:1.5;min-height:4.5em;flex:1}
 .product-card:hover .pc-sub{color:rgba(255,255,255,.7)}
 .product-card .pc-price{font-weight:500}
 .product-card .pc-arrow{margin-top:4px}
