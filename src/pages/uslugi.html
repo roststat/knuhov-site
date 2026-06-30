@@ -1,0 +1,52 @@
+<!--TITLE-->Услуги — Кнухов консалтинг<!--/TITLE-->
+<!--DESCRIPTION-->Каталог услуг Кнухов консалтинг: диагностика, сопровождение и технические работы для медицинского бизнеса. Фильтр по направлениям.<!--/DESCRIPTION-->
+<!--MAIN-->
+<main id="top">
+
+  <section class="benefits" id="catalog" style="padding-top:64px">
+    <div class="container container--wide">
+      <div class="benefits_content">
+        <div style="text-align:center">
+          <div class="kicker">Услуги</div>
+          <h2>Каталог услуг</h2>
+          <p class="lead" style="margin:14px auto 0">Все услуги в одном месте — отфильтруйте по направлению.</p>
+        </div>
+        <div class="catalog-filters" aria-label="Фильтр по категориям">
+          <!--CHIPS-->
+        </div>
+        <div class="product-grid diag-grid catalog-grid" id="catalog-grid">
+<!--CARDS-->
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<!--/MAIN-->
+<!--SCRIPTS-->
+<script>
+(function(){
+  var chips=document.querySelectorAll('.catalog-chip');
+  var cards=document.querySelectorAll('.catalog-card');
+  var valid=['diagnostika','soprovozhdenie','tehnicheskie'];
+  function apply(f){
+    var i;
+    for(i=0;i<chips.length;i++){chips[i].classList.toggle('is-active',chips[i].getAttribute('data-filter')===f);}
+    for(i=0;i<cards.length;i++){
+      var show=(f==='all'||cards[i].getAttribute('data-category')===f);
+      cards[i].style.display=show?'':'none';
+    }
+  }
+  function fromHash(){var h=(location.hash||'').replace('#','');return valid.indexOf(h)>=0?h:'all';}
+  for(var k=0;k<chips.length;k++){
+    chips[k].addEventListener('click',function(){
+      var f=this.getAttribute('data-filter');
+      if(f==='all'){history.replaceState(null,'',location.pathname);}else{location.hash=f;}
+      apply(f);
+    });
+  }
+  window.addEventListener('hashchange',function(){apply(fromHash());});
+  apply(fromHash());
+})();
+</script>
+<!--/SCRIPTS-->

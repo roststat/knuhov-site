@@ -1,0 +1,84 @@
+<script>
+(function(){
+  /* ===== Аналитика (заготовка): подключить GA4/Я.Метрику позже одной строкой в track() ===== */
+  window.track=window.track||function(name,payload){
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push(Object.assign({event:name},payload||{}));
+    if(window.console&&console.debug)console.debug('[track]',name,payload||{});
+  };
+})();
+(function(){
+  /* ===== Анимация подсчёта цифр в блоке «Опыт» ===== */
+  var nums=document.querySelectorAll('.trust-num[data-count]');
+  if(!nums.length)return;
+  function animateCount(el){
+    var target=parseInt(el.dataset.count,10);
+    var duration=1200;
+    var start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var progress=Math.min((ts-start)/duration,1);
+      var eased=1-Math.pow(1-progress,3);
+      el.textContent=Math.round(eased*target);
+      if(progress<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCount(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.4});
+  nums.forEach(function(el){observer.observe(el);});
+})();
+(function(){
+  /* ===== Мигание кнопки «Перейти в раздел» по клику ===== */
+  document.querySelectorAll('.pc-action').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btn.classList.remove('is-blinking');
+      void btn.offsetWidth;
+      btn.classList.add('is-blinking');
+    });
+    btn.addEventListener('animationend',function(){btn.classList.remove('is-blinking');});
+  });
+})();
+(function(){
+  /* ===== Попапы: общая механика открытия/закрытия ===== */
+  function openPopup(id){
+    var p=document.getElementById(id);
+    if(!p)return;
+    if(id==='diagnostic-popup'&&typeof window.resetDiagnostic==='function')window.resetDiagnostic();
+    p.classList.add('is-open');
+    p.setAttribute('aria-hidden','false');
+    document.body.classList.add('popup-locked');
+  }
+  function closePopup(p){
+    p.classList.remove('is-open');
+    p.setAttribute('aria-hidden','true');
+    document.body.classList.remove('popup-locked');
+  }
+  window.closePopup=closePopup;
+  document.addEventListener('click',function(e){
+    var opener=e.target.closest('[data-popup-open]');
+    if(opener){
+      e.preventDefault();
+      openPopup(opener.dataset.popupOpen);
+      return;
+    }
+    var closer=e.target.closest('[data-popup-close]');
+    if(closer){
+      e.preventDefault();
+      closePopup(closer.closest('.popup'));
+    }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      var open=document.querySelector('.popup.is-open');
+      if(open)closePopup(open);
+    }
+  });
+})();
+</script>

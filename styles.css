@@ -85,7 +85,11 @@ a{color:inherit}
   display:flex;align-items:center;padding:70px 0 96px}
 .hero h1{max-width:640px;margin-top:20px}
 .hero .lead{margin:22px 0 0;max-width:600px}
-.hero .btn{margin-top:36px}
+.hero-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:36px}
+.hero-cta .btn{margin-top:0}
+.hero-free{display:inline-flex;align-items:center;background:var(--ink);color:var(--paper);
+  padding:9px 16px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase}
 
 /* ===== Hero: фоновое изображение ===== */
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
@@ -283,8 +287,17 @@ body.popup-locked{overflow:hidden}
   .trust-num{font-size:48px}
 }
 
+/* ===== Мост: от результата теста к аудиту ===== */
+/* Стык с каталогом — тоже белое на белом, убираем верхний паддинг. Три полосы — той же
+   ширины, что у карточек каталога, чтобы три мысли блока выстраивались по тем же вертикалям. */
+.bridge{padding-top:0}
+.bridge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.bridge-col p{font-size:16px;line-height:1.6;color:var(--muted)}
+.bridge-quote{font-size:23px;font-weight:500;color:var(--ink);line-height:1.3;text-wrap:balance}
+@media (max-width:820px){.bridge-grid{grid-template-columns:1fr;gap:28px}}
+
 /* ===== Как проходит аудит ===== */
-/* Стык с каталогом — тоже белое на белом, убираем верхний паддинг по той же причине. */
+/* Стык с предыдущим блоком — тоже белое на белом, убираем верхний паддинг по той же причине. */
 .process{padding-top:0}
 .audit-steps{margin:40px 0 36px;border-top:1px solid var(--hair)}
 .step-row{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid var(--hair)}
@@ -299,9 +312,7 @@ body.popup-locked{overflow:hidden}
 .d-arrow{color:var(--muted);font-size:13px}
 
 /* ===== Быстрая диагностика (карточки-продукты) ===== */
-/* Стык с предыдущим блоком «Опыт» — оба на белом фоне, без цветовой границы,
-   поэтому стандартный двойной паддинг (110+110) читается как лишний воздух — убираем верхний. */
-.benefits{background:var(--paper);padding-top:0}
+.benefits{background:var(--paper)}
 .benefits_content{display:flex;flex-direction:column;row-gap:48px}
 .diag-grid{margin-top:0}
 .diag-grid .product-card{background:#f4f4f4;border:1px solid transparent}
@@ -417,3 +428,13 @@ body.popup-locked{overflow:hidden}
 .kl-word{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:90px;letter-spacing:-3px}
 .kl-dr{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:26px}
 .kl-rest{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:26px;letter-spacing:.5px}
+
+/* ===== Каталог услуг: фильтры по категориям ===== */
+.catalog-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.catalog-chip{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:500;
+  padding:9px 18px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--paper);color:var(--ink);cursor:pointer;transition:background .18s,color .18s}
+.catalog-chip:hover{background:#f4f4f4}
+.catalog-chip.is-active{background:var(--ink);color:var(--paper)}
+.catalog-grid{grid-template-columns:repeat(3,1fr)}
+@media (max-width:820px){.catalog-grid{grid-template-columns:1fr}}

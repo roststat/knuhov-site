@@ -1,0 +1,65 @@
+<!--TITLE-->Контакты — Кнухов консалтинг<!--/TITLE-->
+<!--DESCRIPTION-->Контакты и реквизиты Кнухов консалтинг.<!--/DESCRIPTION-->
+<!--MAIN-->
+<main id="top">
+
+  <section class="manifesto" id="contacts" style="padding-top:64px">
+    <div class="container container--wide">
+      <div style="text-align:center;margin-bottom:32px">
+        <div class="kicker">Контакты</div>
+        <h2>Как связаться</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div class="bridge-col">
+          <h3 style="margin-bottom:8px">Телефон</h3>
+          <p>[Черновик: +7 (___) ___-__-__]</p>
+        </div>
+        <div class="bridge-col">
+          <h3 style="margin-bottom:8px">Email</h3>
+          <p>[Черновик: info@knuhov.ru]</p>
+        </div>
+        <div class="bridge-col">
+          <h3 style="margin-bottom:8px">Соцсети</h3>
+          <p>[Черновик: Telegram, ВКонтакте]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Форма заявки (визуально готова, без реальной отправки) ===== -->
+  <section id="contact-form">
+    <div class="container">
+      <div class="form" style="max-width:560px;margin:0 auto">
+        <div class="field"><label for="f-name">Как вас зовут</label><input id="f-name" type="text" autocomplete="name"></div>
+        <div class="field"><label for="f-contact">Telegram или телефон</label><input id="f-contact" type="text" autocomplete="tel"></div>
+        <div class="field"><label for="f-message">Сообщение</label><input id="f-message" type="text"></div>
+        <label class="consent"><input type="checkbox" id="f-consent"> Согласен на обработку персональных данных</label>
+        <button class="btn btn--dark" id="f-submit" type="button" style="width:100%;justify-content:center">Отправить заявку</button>
+        <div class="thanks" id="f-thanks">Заявка принята. Свяжемся в течение дня.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto" id="requisites">
+    <div class="container container--wide" style="text-align:center">
+      <h3 style="margin-bottom:8px">Реквизиты</h3>
+      <p>[Черновик: ИП Кнухов Ислам ___, ИНН ___________, ОГРНИП ___________, юридический адрес ___________]</p>
+    </div>
+  </section>
+
+</main>
+<!--/MAIN-->
+<!--SCRIPTS-->
+<script>
+(function(){
+  /* ===== Форма заявки: пока без бэкенда — только визуальное подтверждение ===== */
+  var submitBtn=document.getElementById('f-submit');
+  var thanks=document.getElementById('f-thanks');
+  if(!submitBtn||!thanks)return;
+  submitBtn.addEventListener('click',function(){
+    window.track('contact_form_submitted',{});
+    thanks.style.display='block';
+  });
+})();
+</script>
+<!--/SCRIPTS-->
