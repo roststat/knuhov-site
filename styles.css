@@ -24,6 +24,10 @@ h1,h2,h3{font-weight:500;letter-spacing:-1px;line-height:1.05}
 h1{font-size:clamp(36px,6.2vw,60px);letter-spacing:-1.6px}
 h2{font-size:clamp(30px,4.2vw,42px);letter-spacing:-1.2px}
 h3{font-size:23px;letter-spacing:-.5px}
+/* Титульный h1 внутренних страниц — визуально в масштабе h2, чтобы не спорил с хиро главной */
+.h1-inner{font-size:clamp(30px,4.2vw,42px);letter-spacing:-1.2px}
+/* h2-секция в масштабе h3 — для подзаголовков, поднятых по иерархии без смены размера */
+.h2-sub{font-size:23px;letter-spacing:-.5px}
 p{font-weight:400}
 a{color:inherit}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:500;letter-spacing:.02em}

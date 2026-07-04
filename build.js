@@ -181,17 +181,17 @@ function servicePageMain(s) {
       <div class="benefits_content">
         <div style="text-align:center">
           <div class="kicker">${catLabel(s.cat)}</div>
-          <h2>${s.title}</h2>
+          <h1 class="h1-inner">${s.title}</h1>
           <p class="lead" style="margin:14px auto 0">${s.pain || s.teaser}</p>
         </div>
         <div>
-          <h3>Что входит</h3>
+          <h2 class="h2-sub">Что входит</h2>
           <div class="audit-steps">
 ${stepRows(s.includes)}
           </div>
         </div>
         <div>
-          <h3 style="margin-bottom:10px">Для кого</h3>
+          <h2 class="h2-sub" style="margin-bottom:10px">Для кого</h2>
           <p class="lead">${s.forWhom || ''}</p>
         </div>
         <div style="text-align:center">
