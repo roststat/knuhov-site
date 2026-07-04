@@ -8,6 +8,26 @@
   };
 })();
 (function(){
+  /* ===== Мобильное меню (бургер) ===== */
+  var burger=document.querySelector('.nav-burger');
+  var panel=document.getElementById('mobile-nav');
+  if(!burger||!panel)return;
+  function setOpen(open){
+    panel.hidden=!open;
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  }
+  burger.addEventListener('click',function(){setOpen(panel.hidden);});
+  panel.addEventListener('click',function(e){
+    if(e.target.closest('a'))setOpen(false);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&!panel.hidden)setOpen(false);
+  });
+  window.addEventListener('resize',function(){
+    if(window.innerWidth>820&&!panel.hidden)setOpen(false);
+  });
+})();
+(function(){
   /* ===== Анимация подсчёта цифр в блоке «Опыт» ===== */
   var nums=document.querySelectorAll('.trust-num[data-count]');
   if(!nums.length)return;

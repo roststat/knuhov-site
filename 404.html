@@ -35,7 +35,17 @@
       <a href="/contacts">Контакты</a>
     </nav>
     <a class="btn btn--sm nav-cta" href="/diagnostika">Экспресс-диагностика</a>
+    <button class="nav-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация" hidden>
+    <a href="/#top">Главная</a>
+    <a href="/uslugi">Услуги</a>
+    <a href="/cases">Кейсы</a>
+    <a href="/contacts">Контакты</a>
+    <a class="btn btn--dark" href="/diagnostika">Экспресс-диагностика</a>
+  </nav>
 </header>
 
 
@@ -118,6 +128,26 @@
     window.dataLayer.push(Object.assign({event:name},payload||{}));
     if(window.console&&console.debug)console.debug('[track]',name,payload||{});
   };
+})();
+(function(){
+  /* ===== Мобильное меню (бургер) ===== */
+  var burger=document.querySelector('.nav-burger');
+  var panel=document.getElementById('mobile-nav');
+  if(!burger||!panel)return;
+  function setOpen(open){
+    panel.hidden=!open;
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  }
+  burger.addEventListener('click',function(){setOpen(panel.hidden);});
+  panel.addEventListener('click',function(e){
+    if(e.target.closest('a'))setOpen(false);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&!panel.hidden)setOpen(false);
+  });
+  window.addEventListener('resize',function(){
+    if(window.innerWidth>820&&!panel.hidden)setOpen(false);
+  });
 })();
 (function(){
   /* ===== Анимация подсчёта цифр в блоке «Опыт» ===== */
