@@ -208,8 +208,10 @@ for (const file of pages) {
   // Каталог: подставляем сгенерированные фильтры и карточки
   main = main.replace('<!--CHIPS-->', chipsHTML()).replace('<!--CARDS-->', cardsHTML());
 
-  fs.writeFileSync(path.join(ROOT, file), assemble(title, description, main, scripts, noindex, canonicalPath(file)));
-  if (!noindex && file !== '404.html') sitemapUrls.push(canonicalPath(file));
+  // 404 собирается без canonical/OG (urlPath = null) и не попадает в sitemap
+  const urlPath = file === '404.html' ? null : canonicalPath(file);
+  fs.writeFileSync(path.join(ROOT, file), assemble(title, description, main, scripts, noindex, urlPath));
+  if (!noindex && urlPath) sitemapUrls.push(urlPath);
   console.log('built ' + file);
 }
 
