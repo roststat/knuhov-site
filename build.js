@@ -30,9 +30,9 @@ const CATEGORIES = [
 
 const SERVICES = [
   // Диагностика — обе услуги живут на лендинге Экспресс-диагностики (href), свои страницы не генерим
-  { cat: 'diagnostika', title: 'Бесплатный тест', price: 'Бесплатно', href: '/diagnostika.html',
+  { cat: 'diagnostika', title: 'Бесплатный тест', price: 'Бесплатно', href: '/diagnostika',
     teaser: 'Тест на 6 вопросов: тип системы и слой, где клиника теряет деньги. 2 минуты, без регистрации.' },
-  { cat: 'diagnostika', title: 'Стратегический аудит', price: 'От 25 000 ₽', href: '/diagnostika.html#audit-card',
+  { cat: 'diagnostika', title: 'Стратегический аудит', price: 'От 25 000 ₽', href: '/diagnostika#audit-card',
     teaser: 'Личный разбор слоёв бизнеса и дорожная карта роста на ближайшие шаги.' },
 
   // Сопровождение — работа с базой и аутсорс ролей
@@ -96,7 +96,7 @@ const SERVICES = [
 ];
 
 function catLabel(id) { const c = CATEGORIES.find(x => x.id === id); return c ? c.label : ''; }
-function serviceHref(s) { return s.href || ('/usluga-' + s.slug + '.html'); }
+function serviceHref(s) { return s.href || ('/usluga-' + s.slug); }
 
 function chipsHTML() {
   const chips = ['<button class="catalog-chip is-active" data-filter="all">Все</button>'];
@@ -196,7 +196,7 @@ ${stepRows(s.includes)}
         </div>
         <div style="text-align:center">
           <p class="pc-sub" style="max-width:520px;margin:0 auto 18px">Стоимость обсуждается индивидуально — зависит от размера клиники и объёма работ.</p>
-          <a class="btn" href="/contacts.html">Оставить заявку
+          <a class="btn" href="/contacts">Оставить заявку
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
