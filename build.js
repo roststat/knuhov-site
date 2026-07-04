@@ -194,6 +194,7 @@ function assemble(title, description, main, scripts, noindex, urlPath) {
 }
 
 /* ===== Сборка страниц из src/pages ===== */
+const sitemapUrls = []; // канонические URL для sitemap.xml (без noindex и 404)
 const pages = fs.readdirSync(PAGES_DIR).filter(f => f.endsWith('.html'));
 for (const file of pages) {
   const src = read(path.join(PAGES_DIR, file));
@@ -208,6 +209,7 @@ for (const file of pages) {
   main = main.replace('<!--CHIPS-->', chipsHTML()).replace('<!--CARDS-->', cardsHTML());
 
   fs.writeFileSync(path.join(ROOT, file), assemble(title, description, main, scripts, noindex, canonicalPath(file)));
+  if (!noindex && file !== '404.html') sitemapUrls.push(canonicalPath(file));
   console.log('built ' + file);
 }
 
@@ -258,5 +260,18 @@ for (const s of SERVICES) {
   if (!s.slug) continue; // услуги с href (диагностика) собственной страницы не имеют
   const file = 'usluga-' + s.slug + '.html';
   fs.writeFileSync(path.join(ROOT, file), assemble(s.seoTitle || (s.title + ' — Кнухов консалтинг'), s.seoDescription || s.teaser, servicePageMain(s), '', false, canonicalPath(file)));
+  sitemapUrls.push(canonicalPath(file));
   console.log('built ' + file + ' (service)');
 }
+
+/* ===== Генерация sitemap.xml ===== */
+function sitemapXML(urls) {
+  const today = new Date().toISOString().slice(0, 10);
+  return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    urls.map(u => '  <url><loc>' + SITE_URL + u + '</loc><lastmod>' + today + '</lastmod></url>').join('\n') +
+    '\n</urlset>\n';
+}
+sitemapUrls.sort();
+fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemapXML(sitemapUrls));
+console.log('built sitemap.xml (' + sitemapUrls.length + ' urls)');
