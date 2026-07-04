@@ -145,14 +145,33 @@ const header = read(path.join(PARTIALS_DIR, 'header.html'));
 const footer = read(path.join(PARTIALS_DIR, 'footer.html'));
 const scriptsBase = read(path.join(PARTIALS_DIR, 'scripts-base.html'));
 
-const HEAD = (title, description, noindex) => `<!DOCTYPE html>
+const SITE_URL = 'https://knuhov.ru';
+/* Чистый канонический путь страницы: index.html -> /, uslugi.html -> /uslugi */
+function canonicalPath(file) { return file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, ''); }
+
+const HEAD = (title, description, noindex, urlPath) => {
+  // urlPath === null (напр. 404) -> без canonical и og:url
+  const og = urlPath ? `<link rel="canonical" href="${SITE_URL}${urlPath}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Кнухов консалтинг">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<meta property="og:url" content="${SITE_URL}${urlPath}">
+<meta property="og:image" content="${SITE_URL}/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+` : '';
+  const robots = noindex ? '<meta name="robots" content="noindex,follow">\n' : '';
+  return `<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <meta name="description" content="${description}">
-${noindex ? '<meta name="robots" content="noindex,follow">\n' : ''}<link rel="preconnect" href="https://fonts.googleapis.com">
+${robots}${og}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
@@ -162,9 +181,10 @@ ${noindex ? '<meta name="robots" content="noindex,follow">\n' : ''}<link rel="pr
 </head>
 <body>
 `;
+};
 
-function assemble(title, description, main, scripts, noindex) {
-  return HEAD(title, description, noindex) +
+function assemble(title, description, main, scripts, noindex, urlPath) {
+  return HEAD(title, description, noindex, urlPath) +
     header + '\n\n' +
     main + '\n\n' +
     footer + '\n\n' +
@@ -187,7 +207,7 @@ for (const file of pages) {
   // Каталог: подставляем сгенерированные фильтры и карточки
   main = main.replace('<!--CHIPS-->', chipsHTML()).replace('<!--CARDS-->', cardsHTML());
 
-  fs.writeFileSync(path.join(ROOT, file), assemble(title, description, main, scripts, noindex));
+  fs.writeFileSync(path.join(ROOT, file), assemble(title, description, main, scripts, noindex, canonicalPath(file)));
   console.log('built ' + file);
 }
 
@@ -237,6 +257,6 @@ ${stepRows(s.includes)}
 for (const s of SERVICES) {
   if (!s.slug) continue; // услуги с href (диагностика) собственной страницы не имеют
   const file = 'usluga-' + s.slug + '.html';
-  fs.writeFileSync(path.join(ROOT, file), assemble(s.seoTitle || (s.title + ' — Кнухов консалтинг'), s.seoDescription || s.teaser, servicePageMain(s), ''));
+  fs.writeFileSync(path.join(ROOT, file), assemble(s.seoTitle || (s.title + ' — Кнухов консалтинг'), s.seoDescription || s.teaser, servicePageMain(s), '', false, canonicalPath(file)));
   console.log('built ' + file + ' (service)');
 }
