@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Фирменная мозаика (design-guide §11): 2 квадрата слева + высокий блок справа,
+       у каждого скруглён свой угол. Тёмная тема — белая заливка. -->
+  <style>path{fill:#000}@media(prefers-color-scheme:dark){path{fill:#fff}}</style>
+  <path d="M0 10 A10 10 0 0 1 10 0 H29 V29 H0 Z"/>
+  <path d="M0 35 H29 V64 H10 A10 10 0 0 1 0 54 Z"/>
+  <path d="M35 0 H54 A10 10 0 0 1 64 10 V54 A10 10 0 0 1 54 64 H35 Z"/>
+</svg>
