@@ -269,6 +269,11 @@
   /* ===== Анимация подсчёта цифр в блоке «Опыт» ===== */
   var nums=document.querySelectorAll('.trust-num[data-count]');
   if(!nums.length)return;
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){
+    nums.forEach(function(el){el.textContent=el.dataset.count;});
+    return;
+  }
   function animateCount(el){
     var target=parseInt(el.dataset.count,10);
     var duration=1200;
