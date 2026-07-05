@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#e8eefc"/>
+  <!-- конверт -->
+  <path d="M160 180h420v220q0 30-30 30H160z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <path d="M160 180l210 140 210-140" fill="none" stroke="#000" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M160 180h420l-210 140z" fill="#2563eb" opacity=".2"/>
+  <!-- уведомление -->
+  <circle cx="580" cy="180" r="44" fill="#d02026"/>
+  <text x="580" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#fff">3</text>
+  <!-- отправка: стрелки-сообщения -->
+  <path d="M620 330h80" stroke="#1f9d55" stroke-width="14" stroke-linecap="round"/>
+  <path d="M700 312l40 18-40 18z" fill="#1f9d55"/>
+  <path d="M600 410h70" stroke="#e0a526" stroke-width="12" stroke-linecap="round"/>
+  <path d="M660 394l36 16-36 16z" fill="#e0a526"/>
+  <path d="M640 250h50" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
+  <path d="M680 236l32 14-32 14z" fill="#2563eb"/>
+  <!-- часы: вовремя -->
+  <circle cx="200" cy="480" r="52" fill="#e0a526"/>
+  <path d="M200 452v28l20 14" fill="none" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

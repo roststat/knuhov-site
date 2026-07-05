@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#faf0da"/>
+  <!-- пост в ленте -->
+  <path d="M120 100h400v280q0 30-30 30H120z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <circle cx="180" cy="160" r="26" fill="#e0a526"/>
+  <rect x="225" y="142" width="120" height="12" fill="#000" opacity=".3"/>
+  <rect x="225" y="166" width="80" height="10" fill="#000" opacity=".2"/>
+  <path d="M150 215h340v120q0 20-20 20H150z" fill="#2563eb" opacity=".18"/>
+  <path d="M225 335l70-80 55 60 45-40 60 60z" fill="#2563eb"/>
+  <circle cx="270" cy="255" r="16" fill="#e0a526"/>
+  <!-- реакции -->
+  <circle cx="580" cy="200" r="56" fill="#d02026"/>
+  <path d="M580 228c-28-20-42-36-42-52 0-26 34-30 42-8 8-22 42-18 42 8 0 16-14 32-42 52z" fill="#fff"/>
+  <circle cx="650" cy="330" r="44" fill="#1f9d55"/>
+  <path d="M630 328h12v26h-12z" fill="#fff"/>
+  <path d="M646 354v-24l12-22q10 2 8 14l-3 10h16q10 0 8 12l-4 16q-2 6-10 6h-20z" fill="#fff"/>
+  <!-- пузырь комментария -->
+  <path d="M560 430h150v70q0 22-22 22h-88l-40 32v-32q-22 0-22-22v-48q0-22 22-22z" fill="#fff" stroke="#000" stroke-width="3" transform="translate(-380 -6)"/>
+  <g fill="#000" opacity=".35">
+    <circle cx="220" cy="480" r="7"/><circle cx="255" cy="480" r="7"/><circle cx="290" cy="480" r="7"/>
+  </g>
+</svg>

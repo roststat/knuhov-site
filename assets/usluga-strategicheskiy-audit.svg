@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fdecec"/>
+  <!-- слои системы клиники -->
+  <path d="M170 140h380v70q0 22-22 22H170z" fill="#2563eb" opacity=".8"/>
+  <path d="M170 250h380v70q0 22-22 22H170z" fill="#e0a526"/>
+  <path d="M170 360h380v70q0 22-22 22H170z" fill="#1f9d55" opacity=".85"/>
+  <g fill="#fff"><rect x="200" y="168" width="130" height="13"/><rect x="200" y="278" width="160" height="13"/><rect x="200" y="388" width="110" height="13"/></g>
+  <!-- лупа находит разрыв в среднем слое -->
+  <circle cx="545" cy="285" r="105" fill="#fff" opacity=".35"/>
+  <circle cx="545" cy="285" r="105" fill="none" stroke="#d02026" stroke-width="22"/>
+  <path d="M622 362l86 86" stroke="#d02026" stroke-width="34" stroke-linecap="round"/>
+  <!-- точка потери внутри лупы -->
+  <path d="M545 236l44 76h-88z" fill="#d02026"/>
+  <text x="545" y="308" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#fff">!</text>
+</svg>

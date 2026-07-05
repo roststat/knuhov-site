@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fdecec"/>
+  <!-- анкета теста -->
+  <path d="M180 90h340v380q0 30-30 30H180z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="230" cy="170" r="18" fill="#d02026"/>
+    <circle cx="230" cy="250" r="18" fill="#d02026"/>
+    <circle cx="230" cy="330" r="18" fill="#fff" stroke="#000" stroke-width="3"/>
+  </g>
+  <g fill="#000" opacity=".28">
+    <rect x="275" y="162" width="170" height="14"/>
+    <rect x="275" y="242" width="140" height="14"/>
+    <rect x="275" y="322" width="160" height="14"/>
+  </g>
+  <!-- прогресс -->
+  <rect x="210" y="400" width="280" height="18" fill="#000" opacity=".12"/>
+  <path d="M210 400h180v18h-180z" fill="#d02026"/>
+  <!-- бесплатно: ярлык -->
+  <path d="M540 150h160v80q0 26-26 26H540z" fill="#1f9d55"/>
+  <text x="620" y="204" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#fff">0 ₽</text>
+  <!-- таймер: 2 минуты -->
+  <circle cx="620" cy="380" r="58" fill="#e0a526"/>
+  <path d="M620 348v32l22 16" fill="none" stroke="#000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

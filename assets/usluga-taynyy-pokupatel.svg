@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#faf0da"/>
+  <!-- инкогнито: шляпа и очки -->
+  <circle cx="300" cy="280" r="120" fill="#e0a526"/>
+  <path d="M170 240h260v26q0 14-14 14H184q-14 0-14-14z" fill="#000"/>
+  <path d="M230 178h140v62H230z" fill="#000"/>
+  <circle cx="252" cy="330" r="34" fill="#000"/>
+  <circle cx="348" cy="330" r="34" fill="#000"/>
+  <rect x="286" y="324" width="28" height="10" fill="#000"/>
+  <circle cx="262" cy="320" r="9" fill="#fff"/>
+  <circle cx="358" cy="320" r="9" fill="#fff"/>
+  <!-- чек-лист проверки -->
+  <path d="M500 140h200v300q0 28-28 28H500z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M525 200l12 12 22-24" fill="none" stroke="#1f9d55" stroke-width="9"/>
+    <path d="M525 270l12 12 22-24" fill="none" stroke="#1f9d55" stroke-width="9"/>
+    <path d="M528 340l28 28m0-28l-28 28" fill="none" stroke="#d02026" stroke-width="9"/>
+  </g>
+  <g fill="#000" opacity=".25">
+    <rect x="580" y="195" width="95" height="11"/>
+    <rect x="580" y="265" width="95" height="11"/>
+    <rect x="580" y="347" width="95" height="11"/>
+  </g>
+</svg>

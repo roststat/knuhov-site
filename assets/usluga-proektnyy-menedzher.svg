@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#faf0da"/>
+  <!-- канбан: три колонки -->
+  <path d="M80 90h190v380q0 30-30 30H80z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <path d="M305 90h190v380q0 30-30 30H305z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <path d="M530 90h190v380q0 30-30 30H530z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <!-- шапки колонок -->
+  <rect x="105" y="115" width="80" height="12" fill="#000" opacity=".3"/>
+  <rect x="330" y="115" width="80" height="12" fill="#000" opacity=".3"/>
+  <rect x="555" y="115" width="80" height="12" fill="#000" opacity=".3"/>
+  <!-- задачи: сделано (зелёные), в работе (янтарная), очередь -->
+  <path d="M100 155h150v54q0 18-18 18H100z" fill="#1f9d55"/>
+  <path d="M100 250h150v54q0 18-18 18H100z" fill="#1f9d55"/>
+  <path d="M100 345h150v54q0 18-18 18H100z" fill="#d9d9d9"/>
+  <path d="M325 155h150v54q0 18-18 18H325z" fill="#e0a526"/>
+  <path d="M325 250h150v54q0 18-18 18H325z" fill="#d9d9d9"/>
+  <path d="M550 155h150v54q0 18-18 18H550z" fill="#d9d9d9"/>
+  <path d="M550 250h150v54q0 18-18 18H550z" fill="#d9d9d9"/>
+  <!-- галочки на сделанном -->
+  <path d="M130 182l16 16 30-32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 277l16 16 30-32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- стрелка переноса задачи -->
+  <path d="M255 480q145 60 290 0" fill="none" stroke="#2563eb" stroke-width="14" stroke-linecap="round"/>
+  <path d="M545 500l44-18-30-34z" fill="#2563eb"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#e8eefc"/>
+  <!-- дашборд -->
+  <path d="M100 90h600v380q0 30-30 30H100z" fill="#fff" stroke="#000" stroke-width="3"/>
+  <!-- бары по источникам -->
+  <path d="M160 380V250h70v130z" fill="#2563eb" opacity=".45"/>
+  <path d="M260 380V190h70v190z" fill="#2563eb" opacity=".7"/>
+  <path d="M360 380V290h70v90z" fill="#d02026" opacity=".8"/>
+  <path d="M460 380V150h70v230z" fill="#1f9d55"/>
+  <!-- линия выручки -->
+  <path d="M160 330l135-90 110 60 130-130 65 30" fill="none" stroke="#000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="600" cy="200" r="16" fill="#000"/>
+  <!-- ось -->
+  <path d="M140 400h520" stroke="#000" stroke-width="4"/>
+  <!-- метка окупаемости -->
+  <path d="M560 118h104v46q0 14-14 14h-90z" fill="#e0a526"/>
+  <path d="M585 156l14-16 14 16m-14-16v34" stroke="#000" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(13 -9)"/>
+</svg>

@@ -31,8 +31,10 @@ const CATEGORIES = [
 const SERVICES = [
   // Диагностика — обе услуги живут на лендинге Экспресс-диагностики (href), свои страницы не генерим
   { cat: 'diagnostika', title: 'Бесплатный тест', price: 'Бесплатно', href: '/diagnostika',
+    image: '/assets/usluga-besplatnyy-test.svg',
     teaser: 'Тест на 6 вопросов: тип системы и слой, где клиника теряет деньги. 2 минуты, без регистрации.' },
   { cat: 'diagnostika', title: 'Стратегический аудит', price: 'От 25 000 ₽', href: '/diagnostika#audit-card',
+    image: '/assets/usluga-strategicheskiy-audit.svg',
     teaser: 'Личный разбор слоёв бизнеса и дорожная карта роста на ближайшие шаги.' },
 
   // Сопровождение — работа с базой и аутсорс ролей
@@ -259,9 +261,18 @@ function chipsHTML() {
   return chips.join('\n          ');
 }
 
+/* Иллюстрация услуги: явное поле image либо конвенция /assets/usluga-<slug>.svg */
+function serviceImage(s) { return s.image || (s.slug ? '/assets/usluga-' + s.slug + '.svg' : null); }
+function cardVisualHTML(s) {
+  const img = serviceImage(s);
+  return img
+    ? '<div class="card-visual" aria-hidden="true"><img src="' + img + '" alt="" width="800" height="600" loading="lazy"></div>'
+    : '<div class="card-visual" aria-hidden="true"><span class="bi-dot"></span></div>';
+}
+
 function cardHTML(s) {
   return '          <a class="product-card catalog-card" data-category="' + s.cat + '" href="' + serviceHref(s) + '">\n' +
-    '            <div class="card-visual" aria-hidden="true"><span class="bi-dot"></span></div>\n' +
+    '            ' + cardVisualHTML(s) + '\n' +
     '            <div class="pc-body">\n' +
     '              <span class="pc-tag">' + catLabel(s.cat) + '</span>\n' +
     '              <h3>' + s.title + '</h3>\n' +
@@ -443,6 +454,7 @@ function servicePageMain(s) {
       </nav>
       <div class="benefits_content">
         <div style="text-align:center">
+          <div class="card-visual service-visual" aria-hidden="true"><img src="${serviceImage(s)}" alt="" width="800" height="600" fetchpriority="high"></div>
           <h1 class="h1-inner">${s.title}</h1>
           <p class="lead" style="margin:14px auto 0">${s.pain || s.teaser}</p>
         </div>

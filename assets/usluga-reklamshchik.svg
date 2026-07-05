@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#faf0da"/>
+  <!-- мегафон -->
+  <path d="M120 260l220-110v300L120 340z" fill="#e0a526"/>
+  <path d="M120 260h-40v80h40z" fill="#000"/>
+  <path d="M180 350v90q0 24 24 24h30q24 0 24-24v-64" fill="none" stroke="#000" stroke-width="16"/>
+  <!-- волны -->
+  <path d="M400 220q60 80 0 160" fill="none" stroke="#000" stroke-width="14" stroke-linecap="round"/>
+  <path d="M460 180q100 120 0 240" fill="none" stroke="#000" stroke-width="14" stroke-linecap="round" opacity=".55"/>
+  <!-- результат: заявки-монеты -->
+  <circle cx="600" cy="220" r="52" fill="#1f9d55"/>
+  <path d="M600 196v48m-14-38h28m-28 28h28" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="672" cy="330" r="40" fill="#2563eb"/>
+  <path d="M672 312v36m-11-28h22m-22 20h22" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="580" cy="420" r="32" fill="#d02026"/>
+  <path d="M580 406v28m-9-22h18m-18 16h18" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+</svg>
