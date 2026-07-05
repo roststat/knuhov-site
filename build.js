@@ -281,10 +281,33 @@ ${stepRows(s.includes)}
 </main>`;
 }
 
+/* JSON-LD страницы услуги: Service + BreadcrumbList (из данных SERVICES).
+   Цену НЕ размечаем (offers) — на страницах она «обсуждается индивидуально». */
+function serviceJSONLD(s) {
+  const url = SITE_URL + '/usluga-' + s.slug;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'Service', '@id': url + '#service',
+        name: s.title, description: s.seoDescription || s.teaser,
+        serviceType: catLabel(s.cat), url: url,
+        provider: { '@id': SITE_URL + '/#org' }, areaServed: 'RU' },
+      { '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
+          { '@type': 'ListItem', position: 2, name: 'Услуги', item: SITE_URL + '/uslugi' },
+          { '@type': 'ListItem', position: 3, name: catLabel(s.cat), item: SITE_URL + '/uslugi#' + s.cat },
+          { '@type': 'ListItem', position: 4, name: s.title }
+        ] }
+    ]
+  };
+}
+
 for (const s of SERVICES) {
   if (!s.slug) continue; // услуги с href (диагностика) собственной страницы не имеют
   const file = 'usluga-' + s.slug + '.html';
-  fs.writeFileSync(path.join(ROOT, file), assemble(s.seoTitle || (s.title + ' — Кнухов консалтинг'), s.seoDescription || s.teaser, servicePageMain(s), '', false, canonicalPath(file)));
+  const ldScript = '<script type="application/ld+json">' + JSON.stringify(serviceJSONLD(s)) + '</script>';
+  fs.writeFileSync(path.join(ROOT, file), assemble(s.seoTitle || (s.title + ' — Кнухов консалтинг'), s.seoDescription || s.teaser, servicePageMain(s), ldScript, false, canonicalPath(file)));
   sitemapUrls.push(canonicalPath(file));
   console.log('built ' + file + ' (service)');
 }
