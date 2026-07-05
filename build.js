@@ -149,6 +149,28 @@ const SITE_URL = 'https://knuhov.ru';
 /* Чистый канонический путь страницы: index.html -> /, uslugi.html -> /uslugi */
 function canonicalPath(file) { return file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, ''); }
 
+/* Базовый JSON-LD: организация + основатель + сайт. Печатается на всех страницах.
+   Телефон/email/адрес/sameAs НЕ добавлять, пока владелец не дал реальные данные (шаг S18). */
+const BASE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'ProfessionalService', '@id': SITE_URL + '/#org',
+      name: 'Кнухов консалтинг', url: SITE_URL + '/',
+      description: 'Консалтинг для медицинского бизнеса: диагностика, сопровождение и техническая настройка роста выручки клиник.',
+      founder: { '@id': SITE_URL + '/#islam' },
+      areaServed: 'RU',
+      knowsAbout: ['медицинский консалтинг', 'управление клиникой', 'CRM для клиник', 'аналитика медицинского бизнеса'] },
+    { '@type': 'Person', '@id': SITE_URL + '/#islam',
+      name: 'Ислам Кнухов',
+      jobTitle: 'Стратег по развитию медицинских проектов',
+      worksFor: { '@id': SITE_URL + '/#org' },
+      image: SITE_URL + '/assets/islam.jpg' },
+    { '@type': 'WebSite', '@id': SITE_URL + '/#website',
+      url: SITE_URL + '/', name: 'Кнухов консалтинг',
+      inLanguage: 'ru-RU', publisher: { '@id': SITE_URL + '/#org' } }
+  ]
+};
+
 const HEAD = (title, description, noindex, urlPath) => {
   // urlPath === null (напр. 404) -> без canonical и og:url
   const og = urlPath ? `<link rel="canonical" href="${SITE_URL}${urlPath}">
@@ -178,6 +200,7 @@ ${robots}${og}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">${JSON.stringify(BASE_JSONLD)}</script>
 </head>
 <body>
 `;
