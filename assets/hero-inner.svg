@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- угловая декоративная композиция для титульных зон внутренних страниц -->
+  <circle cx="470" cy="110" r="120" fill="#e0a526" opacity=".85"/>
+  <path d="M300 220h210v70q0 26-26 26H300z" fill="#2563eb" opacity=".75"/>
+  <path d="M360 350h160v40q0 16-16 16H360z" fill="#2563eb" opacity=".35"/>
+  <path d="M250 380Q400 360 500 250" fill="none" stroke="#1f9d55" stroke-width="26" stroke-linecap="round"/>
+  <path d="M500 250l56-16-26 54z" fill="#1f9d55"/>
+  <path d="M540 300h60v40q0 16-16 16h-44z" fill="#d02026"/>
+  <g fill="#fff">
+    <path d="M440 80q0-10 10-10h18v28h-28z"/>
+    <path d="M440 108h28v28h-18q-10 0-10-10z"/>
+    <path d="M478 70h18q10 0 10 10v46q0 10-10 10h-18z"/>
+  </g>
+  <rect x="270" y="120" width="16" height="16" fill="#d02026"/>
+  <rect x="320" y="60" width="14" height="14" fill="#1f9d55"/>
+</svg>
