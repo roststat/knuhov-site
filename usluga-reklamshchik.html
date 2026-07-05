@@ -339,6 +339,30 @@
     }
   });
 })();
+(function(){
+  /* ===== Scroll-reveal секций и карточек ===== */
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(typeof IntersectionObserver==='undefined')return;
+  var targets=document.querySelectorAll('main section, .product-grid > *');
+  if(!targets.length)return;
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  targets.forEach(function(el,i){
+    if(i===0)return; // первый экран (хиро) — без анимации, важен для LCP
+    el.classList.add('reveal');
+    if(el.getBoundingClientRect().top<window.innerHeight){
+      el.classList.add('is-visible'); // уже во вьюпорте (короткая страница, переход по #hash) — без мигания
+    }else{
+      observer.observe(el);
+    }
+  });
+})();
 </script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://knuhov.ru/usluga-reklamshchik#service","name":"Рекламщик","description":"Ведение рекламы клиники под реальные цели: связка с CRM и аналитикой, контроль стоимости заявки и пациента, регулярная отчётность по результату.","serviceType":"Сопровождение","url":"https://knuhov.ru/usluga-reklamshchik","provider":{"@id":"https://knuhov.ru/#org"},"areaServed":"RU"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://knuhov.ru/"},{"@type":"ListItem","position":2,"name":"Услуги","item":"https://knuhov.ru/uslugi"},{"@type":"ListItem","position":3,"name":"Сопровождение","item":"https://knuhov.ru/uslugi#soprovozhdenie"},{"@type":"ListItem","position":4,"name":"Рекламщик"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Какие каналы вы используете?","acceptedAnswer":{"@type":"Answer","text":"Те, что работают для клиник в вашем регионе: контекстная реклама, гео-сервисы и карты, таргет. Выбор — по задаче и бюджету, а не по моде."}},{"@type":"Question","name":"Рекламу уже ведёт подрядчик. Возьмёте на аудит?","acceptedAnswer":{"@type":"Answer","text":"Да. Разберём кампании и связку с CRM — часто рост даёт не смена подрядчика, а починка воронки после клика."}},{"@type":"Question","name":"Какой бюджет нужен?","acceptedAnswer":{"@type":"Answer","text":"Зависит от города и услуг. Стартуем с бюджета, который вы уже готовы тратить, и наращиваем по мере окупаемости."}}]}]}</script>

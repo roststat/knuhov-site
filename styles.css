@@ -464,6 +464,15 @@ body.popup-locked{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
+/* ===== Scroll-reveal ===== */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(16px);
+    transition:opacity .4s cubic-bezier(.22,.61,.36,1),transform .4s cubic-bezier(.22,.61,.36,1)}
+  .reveal.is-visible{opacity:1;transform:none}
+  .reveal:nth-child(2){transition-delay:.08s}
+  .reveal:nth-child(3){transition-delay:.16s}
+}
+
 /* ===== Продуктовые лендинги ===== */
 .phero{min-height:calc(100vh - var(--header-h));display:flex;align-items:center;padding:60px 0 80px}
 .phero h1{max-width:680px;margin-top:20px}

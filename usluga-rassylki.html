@@ -339,6 +339,30 @@
     }
   });
 })();
+(function(){
+  /* ===== Scroll-reveal секций и карточек ===== */
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(typeof IntersectionObserver==='undefined')return;
+  var targets=document.querySelectorAll('main section, .product-grid > *');
+  if(!targets.length)return;
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  targets.forEach(function(el,i){
+    if(i===0)return; // первый экран (хиро) — без анимации, важен для LCP
+    el.classList.add('reveal');
+    if(el.getBoundingClientRect().top<window.innerHeight){
+      el.classList.add('is-visible'); // уже во вьюпорте (короткая страница, переход по #hash) — без мигания
+    }else{
+      observer.observe(el);
+    }
+  });
+})();
 </script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://knuhov.ru/usluga-rassylki#service","name":"Рассылки","description":"Автоматические напоминания о визитах и профилактике: SMS, мессенджеры, email. Триггеры в CRM возвращают пациентов и повышают доходимость.","serviceType":"Технические работы","url":"https://knuhov.ru/usluga-rassylki","provider":{"@id":"https://knuhov.ru/#org"},"areaServed":"RU"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://knuhov.ru/"},{"@type":"ListItem","position":2,"name":"Услуги","item":"https://knuhov.ru/uslugi"},{"@type":"ListItem","position":3,"name":"Технические работы","item":"https://knuhov.ru/uslugi#tehnicheskie"},{"@type":"ListItem","position":4,"name":"Рассылки"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Писать пациентам — это законно?","acceptedAnswer":{"@type":"Answer","text":"Да, при наличии согласия на коммуникации, которое клиника собирает при первом визите. Поможем привести форму согласия в порядок."}},{"@type":"Question","name":"Какие сервисы вы используете?","acceptedAnswer":{"@type":"Answer","text":"Под задачу и бюджет: SMS-агрегаторы, рассылки в мессенджерах, email-платформы — например SigmaSMS, SendPulse и другие."}},{"@type":"Question","name":"Чем это отличается от «Работы с базой»?","acceptedAnswer":{"@type":"Answer","text":"Рассылки — инструмент, «Работа с базой» — процесс с сегментацией и сценариями возврата. Обычно они работают вместе."}}]}]}</script>
