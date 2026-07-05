@@ -252,9 +252,14 @@ function servicePageMain(s) {
 
   <section class="benefits" id="usluga-${s.slug}" style="padding-top:64px">
     <div class="container container--wide">
+      <nav class="crumbs" aria-label="Хлебные крошки">
+        <a href="/">Главная</a><span class="sqdot"></span>
+        <a href="/uslugi">Услуги</a><span class="sqdot"></span>
+        <a href="/uslugi#${s.cat}">${catLabel(s.cat)}</a><span class="sqdot"></span>
+        <span aria-current="page">${s.title}</span>
+      </nav>
       <div class="benefits_content">
         <div style="text-align:center">
-          <div class="kicker">${catLabel(s.cat)}</div>
           <h1 class="h1-inner">${s.title}</h1>
           <p class="lead" style="margin:14px auto 0">${s.pain || s.teaser}</p>
         </div>
