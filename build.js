@@ -86,7 +86,17 @@ const SERVICES = [
     teaser: 'Учёт и ведение пациентов в CRM — ни одна заявка не теряется между этапами.',
     pain: 'Если заявки и пациенты ведутся в блокноте или в голове администратора — часть из них теряется. CRM делает поток пациентов управляемым и прозрачным.',
     includes: ['Аудит текущего процесса записи', 'Выбор и настройка CRM под клинику', 'Импорт и структурирование базы', 'Воронки и статусы пациентов', 'Обучение администраторов работе в системе'],
-    forWhom: 'Клиникам без единой системы учёта пациентов или с хаотично заведённой CRM.' },
+    forWhom: 'Клиникам без единой системы учёта пациентов или с хаотично заведённой CRM.',
+    process: [
+      { t: 'Аудит текущего процесса', d: 'Смотрим, как сейчас устроены запись, заявки и база: где теряются обращения и что мешает администраторам.' },
+      { t: 'Настройка под клинику', d: 'Выбираем и настраиваем CRM: воронки, статусы пациентов, права доступа, перенос базы.' },
+      { t: 'Обучение и запуск', d: 'Обучаем администраторов, настраиваем контроль качества ведения и сопровождаем первые недели работы.' }
+    ],
+    faq: [
+      { q: 'У нас уже есть CRM, но в ней хаос. Поможете?', a: 'Да. Чаще всего CRM уже есть, но настроена без логики воронки. Разбираем текущую настройку, чистим и перестраиваем под реальный путь пациента.' },
+      { q: 'Какую CRM вы порекомендуете?', a: 'Ту, которая подходит вашим процессам и бюджету. Работаем с распространёнными системами для клиник и подбираем вариант под задачу, а не под конкретного вендора.' },
+      { q: 'Что нужно от нас для старта?', a: 'Доступ к текущей системе учёта (если она есть), описание процесса записи и один ответственный со стороны клиники.' }
+    ] },
   { cat: 'tehnicheskie', slug: 'skvoznaya-analitika', title: 'Сквозная аналитика',
     seoTitle: 'Сквозная аналитика для клиники — Кнухов консалтинг',
     seoDescription: 'Связка «реклама → заявка → визит → выручка»: цели, коллтрекинг, дашборд окупаемости. Видно, какая реклама приводит пациентов, а какая жжёт бюджет.',
@@ -239,6 +249,56 @@ for (const file of pages) {
 }
 
 /* ===== Генерация страниц отдельных услуг ===== */
+/* Опциональные секции страницы услуги (рендерятся только при наличии поля в SERVICES):
+   process [{t,d}] — «Как проходит работа»; faq [{q,a}] — «Вопросы и ответы» (+FAQPage-разметка);
+   seoText — абзацы через \n\n для блока «Подробнее об услуге». */
+function processBlock(s) {
+  if (!s.process || !s.process.length) return '';
+  const rows = s.process.map((p, i) =>
+    '          <div class="step-row">\n' +
+    '            <span class="step-num">' + ('0' + (i + 1)).slice(-2) + '</span>\n' +
+    '            <div class="step-text"><h3>' + p.t + '</h3><p>' + p.d + '</p></div>\n' +
+    '          </div>').join('\n');
+  return `
+        <div>
+          <h2 class="h2-sub">Как проходит работа</h2>
+          <div class="audit-steps">
+${rows}
+          </div>
+        </div>`;
+}
+
+function seoTextBlock(s) {
+  if (!s.seoText) return '';
+  const paras = s.seoText.split('\n\n').map(p =>
+    '          <p class="lead" style="max-width:680px;margin-top:10px">' + p + '</p>').join('\n');
+  return `
+        <div>
+          <h2 class="h2-sub" style="margin-bottom:8px">Подробнее об услуге</h2>
+${paras}
+        </div>`;
+}
+
+function faqBlock(s) {
+  if (!s.faq || !s.faq.length) return '';
+  const items = s.faq.map(f =>
+    '            <details class="faq-item"><summary>' + f.q + '</summary><p>' + f.a + '</p></details>').join('\n');
+  return `
+        <div>
+          <div style="text-align:center"><h2 class="h2-sub">Вопросы и ответы</h2></div>
+          <div class="faq-list">
+${items}
+          </div>
+        </div>`;
+}
+
+/* Смежные услуги: до 3 карточек из той же категории, добор из соседних */
+function relatedServices(s) {
+  const same = SERVICES.filter(x => x.slug && x.slug !== s.slug && x.cat === s.cat);
+  const others = SERVICES.filter(x => x.slug && x.slug !== s.slug && x.cat !== s.cat);
+  return same.concat(others).slice(0, 3);
+}
+
 function stepRows(items) {
   return (items || []).map((it, i) =>
     '          <div class="step-row">\n' +
@@ -272,12 +332,21 @@ ${stepRows(s.includes)}
         <div>
           <h2 class="h2-sub" style="margin-bottom:10px">Для кого</h2>
           <p class="lead">${s.forWhom || ''}</p>
+        </div>${processBlock(s)}${seoTextBlock(s)}${faqBlock(s)}
+        <div>
+          <div style="text-align:center"><h2 class="h2-sub">Смежные услуги</h2></div>
+          <div class="product-grid diag-grid">
+${relatedServices(s).map(cardHTML).join('\n')}
+          </div>
         </div>
         <div style="text-align:center">
           <p class="pc-sub" style="max-width:520px;margin:0 auto 18px">Стоимость обсуждается индивидуально — зависит от размера клиники и объёма работ.</p>
-          <a class="btn" href="/contacts">Оставить заявку
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <div class="hero-cta" style="justify-content:center">
+            <a class="btn btn--dark" href="/contacts">Оставить заявку
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn" href="/diagnostika">Пройти экспресс-диагностику</a>
+          </div>
         </div>
       </div>
     </div>
@@ -290,22 +359,25 @@ ${stepRows(s.includes)}
    Цену НЕ размечаем (offers) — на страницах она «обсуждается индивидуально». */
 function serviceJSONLD(s) {
   const url = SITE_URL + '/usluga-' + s.slug;
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      { '@type': 'Service', '@id': url + '#service',
-        name: s.title, description: s.seoDescription || s.teaser,
-        serviceType: catLabel(s.cat), url: url,
-        provider: { '@id': SITE_URL + '/#org' }, areaServed: 'RU' },
-      { '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
-          { '@type': 'ListItem', position: 2, name: 'Услуги', item: SITE_URL + '/uslugi' },
-          { '@type': 'ListItem', position: 3, name: catLabel(s.cat), item: SITE_URL + '/uslugi#' + s.cat },
-          { '@type': 'ListItem', position: 4, name: s.title }
-        ] }
-    ]
-  };
+  const graph = [
+    { '@type': 'Service', '@id': url + '#service',
+      name: s.title, description: s.seoDescription || s.teaser,
+      serviceType: catLabel(s.cat), url: url,
+      provider: { '@id': SITE_URL + '/#org' }, areaServed: 'RU' },
+    { '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Услуги', item: SITE_URL + '/uslugi' },
+        { '@type': 'ListItem', position: 3, name: catLabel(s.cat), item: SITE_URL + '/uslugi#' + s.cat },
+        { '@type': 'ListItem', position: 4, name: s.title }
+      ] }
+  ];
+  if (s.faq && s.faq.length) {
+    graph.push({ '@type': 'FAQPage',
+      mainEntity: s.faq.map(f => ({ '@type': 'Question', name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+  }
+  return { '@context': 'https://schema.org', '@graph': graph };
 }
 
 for (const s of SERVICES) {
