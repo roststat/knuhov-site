@@ -335,6 +335,7 @@ const HEAD = (title, description, noindex, urlPath) => {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('knuhov_theme');if(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <title>${title}</title>
 <meta name="description" content="${description}">
 ${robots}${og}<link rel="preconnect" href="https://fonts.googleapis.com">

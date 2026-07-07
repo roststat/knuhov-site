@@ -8,6 +8,21 @@
   };
 })();
 (function(){
+  /* ===== Переключатель тёмной темы (атрибут уже выставлен инлайн-скриптом в head — здесь только UI) ===== */
+  var btn=document.querySelector('.theme-toggle');
+  if(!btn)return;
+  function isDark(){return document.documentElement.getAttribute('data-theme')==='dark';}
+  btn.setAttribute('aria-pressed',isDark()?'true':'false');
+  btn.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';
+    if(next==='dark')document.documentElement.setAttribute('data-theme','dark');
+    else document.documentElement.removeAttribute('data-theme');
+    try{localStorage.setItem('knuhov_theme',next);}catch(e){}
+    btn.setAttribute('aria-pressed',next==='dark'?'true':'false');
+    window.track('theme_toggled',{theme:next});
+  });
+})();
+(function(){
   /* ===== Мобильное меню (бургер) ===== */
   var burger=document.querySelector('.nav-burger');
   var panel=document.getElementById('mobile-nav');
