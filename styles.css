@@ -323,6 +323,48 @@ p{font-weight:400}
 .step-text h3{font-size:18px;margin-bottom:6px}
 .step-text p{font-size:14px;color:var(--muted-2);line-height:1.5;max-width:520px}
 
+/* ===== Страница услуги: контент 2/3 + липкий баннер справа 1/3 ===== */
+.svc-page{padding-bottom:96px}
+.svc-layout{display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:start;margin-top:24px}
+.svc-main{display:flex;flex-direction:column;gap:44px;min-width:0}
+.svc-main>div>.audit-steps{margin-top:20px}
+.svc-hero{display:flex;flex-direction:column;align-items:flex-start}
+.svc-hero .kicker{margin-bottom:12px}
+.svc-hero .h1-inner{margin:0}
+.svc-hero .lead{margin-top:16px;max-width:none}
+.svc-hero_img{margin-top:28px;width:100%;aspect-ratio:16/9;background:var(--surface)}
+.svc-main .faq-list{margin-left:0;margin-right:0;max-width:none}
+.svc-note{font-size:15px;color:var(--muted);border-top:1px solid var(--hair);padding-top:24px}
+
+/* Липкий баннер-CTA */
+.svc-aside{position:sticky;top:96px;min-width:0}
+.svc-cta{background:var(--surface);border-radius:var(--r-lg);padding:26px}
+.svc-cta h3{font-size:20px;font-weight:700;line-height:1.25;margin-bottom:10px}
+.svc-cta p{font-size:15px;line-height:1.5;color:var(--muted-2)}
+.svc-cta_visual{margin:-26px -26px 18px;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
+.svc-cta_visual img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.svc-cta_badge{display:inline-block;font-size:13px;font-weight:600;color:var(--green);
+  background:rgba(31,157,85,.1);padding:5px 12px;border-radius:var(--r-pill);margin-bottom:16px}
+.svc-cta .btn{width:100%;justify-content:center;margin-top:20px;white-space:normal;text-align:center;line-height:1.3;font-size:16px;padding:14px 18px}
+/* Состояние «тест пройден» */
+.svc-cta_pdf{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--r-card);padding:14px 16px}
+.svc-cta_pdf-icon{display:flex;width:44px;height:44px;flex:none;align-items:center;justify-content:center;
+  border-radius:50%;background:rgba(31,157,85,.12);color:var(--green)}
+.svc-cta_pdf-txt{display:flex;flex-direction:column;line-height:1.3}
+.svc-cta_pdf-txt strong{font-size:16px;font-weight:700}
+.svc-cta_pdf-txt span{font-size:13px;color:var(--muted)}
+.svc-cta_type{font-size:15px;font-weight:600;color:var(--ink);margin-top:16px}
+.svc-cta_done .btn{margin-top:16px}
+.svc-cta_pdfbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  margin-top:10px;font:600 15px 'Golos Text',sans-serif;background:#fff;color:var(--ink);
+  border:1.5px solid var(--hair);border-radius:var(--r-pill);padding:12px;cursor:pointer;transition:background .18s}
+.svc-cta_pdfbtn:hover{background:var(--surface)}
+.svc-cta_again{display:block;width:100%;text-align:center;margin-top:16px;padding:6px 0}
+@media (max-width:900px){
+  .svc-layout{grid-template-columns:1fr;gap:36px}
+  .svc-aside{position:static}
+}
+
 /* ===== Хлебные крошки ===== */
 .crumbs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:28px;
   font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}

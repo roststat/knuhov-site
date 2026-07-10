@@ -290,6 +290,7 @@ function cardsHTML() { return SERVICES.map(cardHTML).join('\n'); }
 const header = read(path.join(PARTIALS_DIR, 'header.html'));
 const footer = read(path.join(PARTIALS_DIR, 'footer.html'));
 const scriptsBase = read(path.join(PARTIALS_DIR, 'scripts-base.html'));
+const diagnosticPopup = read(path.join(PARTIALS_DIR, 'diagnostic-popup.html'));
 
 const SITE_URL = 'https://knuhov.ru';
 /* Чистый канонический путь страницы: index.html -> /, uslugi.html -> /uslugi */
@@ -353,12 +354,15 @@ ${robots}${og}<link rel="preconnect" href="https://fonts.googleapis.com">
 };
 
 function assemble(title, description, main, scripts, noindex, urlPath) {
+  // Если на странице есть попап-тест — подключаем общий модуль диагностики
+  const diagScript = main.indexOf('id="diagnostic-popup"') !== -1
+    ? '\n<script src="/assets/diagnostic.js" defer></script>' : '';
   return HEAD(title, description, noindex, urlPath) +
     header + '\n\n' +
     main + '\n\n' +
     footer + '\n\n' +
     scriptsBase +
-    (scripts ? '\n' + scripts : '') + '\n' +
+    (scripts ? '\n' + scripts : '') + diagScript + '\n' +
     '</body>\n</html>\n';
 }
 
@@ -376,6 +380,8 @@ for (const file of pages) {
 
   // Каталог: подставляем сгенерированные фильтры и карточки
   main = main.replace('<!--CHIPS-->', chipsHTML()).replace('<!--CARDS-->', cardsHTML());
+  // Попап-тест: подставляем общий партиал по маркеру (страница диагностики)
+  main = main.replace('<!--DIAGNOSTIC-POPUP-->', diagnosticPopup);
 
   // 404 собирается без canonical/OG (urlPath = null) и не попадает в sitemap
   const urlPath = file === '404.html' ? null : canonicalPath(file);
@@ -421,8 +427,8 @@ function faqBlock(s) {
     '            <details class="faq-item"><summary>' + f.q + '</summary><p>' + f.a + '</p></details>').join('\n');
   return `
         <div>
-          <div style="text-align:center"><h2 class="h2-sub">Вопросы и ответы</h2></div>
-          <div class="faq-list">
+          <h2 class="h2-sub">Вопросы и ответы</h2>
+          <div class="faq-list" style="margin-left:0">
 ${items}
           </div>
         </div>`;
@@ -443,10 +449,42 @@ function stepRows(items) {
     '          </div>').join('\n');
 }
 
+/* Правый липкий баннер страницы услуги: два состояния (idle / done) — переключает diagnostic.js */
+function serviceBannerHTML() {
+  return `<div class="svc-cta">
+            <div class="svc-cta_idle">
+              <div class="svc-cta_visual" aria-hidden="true"><img src="/assets/usluga-besplatnyy-test.svg" alt="" width="800" height="600" loading="lazy"></div>
+              <div class="svc-cta_badge">Бесплатно · 2 минуты</div>
+              <h3>Не уверены, что нужно именно это?</h3>
+              <p>Пройдите бесплатный тест — он покажет, на каком слое клиника теряет деньги и с чего начать.</p>
+              <button class="btn btn--dark" type="button" data-popup-open="diagnostic-popup">Пройти бесплатный тест
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <div class="svc-cta_done" hidden>
+              <div class="svc-cta_pdf">
+                <span class="svc-cta_pdf-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg>
+                </span>
+                <div class="svc-cta_pdf-txt"><strong>Результат готов</strong><span>PDF-отчёт собран</span></div>
+              </div>
+              <p class="svc-cta_type" id="svc-cta-type"></p>
+              <a class="btn btn--dark" id="svc-cta-audit" href="/diagnostika#audit-card">Использовать на Стратегическом Аудите
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <button class="svc-cta_pdfbtn" type="button" id="svc-cta-pdf">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+                Скачать PDF
+              </button>
+              <button class="diag-link svc-cta_again" type="button" data-popup-open="diagnostic-popup">Пройти тест ещё раз</button>
+            </div>
+          </div>`;
+}
+
 function servicePageMain(s) {
   return `<main id="top">
 
-  <section class="benefits" id="usluga-${s.slug}" style="padding-top:64px">
+  <section class="benefits svc-page" id="usluga-${s.slug}" style="padding-top:44px">
     <div class="container container--wide">
       <nav class="crumbs" aria-label="Хлебные крошки">
         <a href="/">Главная</a><span class="sqdot"></span>
@@ -454,41 +492,40 @@ function servicePageMain(s) {
         <a href="/uslugi#${s.cat}">${catLabel(s.cat)}</a><span class="sqdot"></span>
         <span aria-current="page">${s.title}</span>
       </nav>
-      <div class="benefits_content">
-        <div style="text-align:center">
-          <div class="card-visual service-visual" aria-hidden="true"><img src="${serviceImage(s)}" alt="" width="800" height="600" fetchpriority="high"></div>
-          <div class="kicker">${catLabel(s.cat)}</div>
-          <h1 class="h1-inner">${s.title}</h1>
-          <p class="lead" style="margin:14px auto 0">${s.pain || s.teaser}</p>
-        </div>
-        <div>
-          <h2 class="h2-sub">Какие задачи помогаем решать</h2>
-          <div class="audit-steps">
+      <div class="svc-layout">
+        <div class="svc-main">
+          <header class="svc-hero">
+            <div class="kicker">${catLabel(s.cat)}</div>
+            <h1 class="h1-inner">${s.title}</h1>
+            <p class="lead">${s.pain || s.teaser}</p>
+            <div class="card-visual svc-hero_img" aria-hidden="true"><img src="${serviceImage(s)}" alt="" width="800" height="600" fetchpriority="high"></div>
+          </header>
+          <div>
+            <h2 class="h2-sub">Какие задачи помогаем решать</h2>
+            <div class="audit-steps">
 ${stepRows(s.includes)}
-          </div>
-        </div>${processBlock(s)}${seoTextBlock(s)}
-        <div>
-          <h2 class="h2-sub" style="margin-bottom:10px">Когда это актуально</h2>
-          <p class="lead">${s.forWhom || ''}</p>
-        </div>${faqBlock(s)}
-        <div>
-          <div style="text-align:center"><h2 class="h2-sub">Смежные задачи</h2></div>
-          <div class="product-grid diag-grid">
+            </div>
+          </div>${processBlock(s)}${seoTextBlock(s)}
+          <div>
+            <h2 class="h2-sub" style="margin-bottom:10px">Когда это актуально</h2>
+            <p class="lead">${s.forWhom || ''}</p>
+          </div>${faqBlock(s)}
+          <div>
+            <h2 class="h2-sub">Смежные задачи</h2>
+            <div class="product-grid">
 ${relatedServices(s).map(cardHTML).join('\n')}
+            </div>
           </div>
+          <p class="svc-note">Мы не продаём это «с полки» — такие задачи закрываем в сопровождении, после диагностики и аудита, когда видно, что именно усилит вашу клинику.</p>
         </div>
-        <div style="text-align:center">
-          <p class="lead" style="max-width:620px;margin:0 auto 22px">Мы не продаём это «с полки». Такие задачи закрываем в сопровождении — после диагностики и аудита, когда видно, что именно усилит вашу клинику.</p>
-          <div class="hero-cta" style="justify-content:center">
-            <a class="btn btn--dark" href="/diagnostika">Пройти экспресс-диагностику
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a class="btn" href="/contacts">Обсудить задачу</a>
-          </div>
-        </div>
+        <aside class="svc-aside">
+${serviceBannerHTML()}
+        </aside>
       </div>
     </div>
   </section>
+
+  ${diagnosticPopup}
 
 </main>`;
 }
