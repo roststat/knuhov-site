@@ -278,7 +278,9 @@ function cardHTML(s) {
     '              <h3>' + s.title + '</h3>\n' +
     '              <p class="pc-sub">' + s.teaser + '</p>\n' +
     '            </div>\n' +
-    '            <p class="pc-price">' + (s.price || 'По запросу') + '</p>\n' +
+    // Цену показываем только у продаваемых напрямую услуг (диагностика: тест/аудит).
+    // Остальные — задачи, которые закрываются в сопровождении после аудита, без прайса.
+    (s.cat === 'diagnostika' ? '            <p class="pc-price">' + (s.price || 'По запросу') + '</p>\n' : '') +
     '          </a>';
 }
 
@@ -395,7 +397,7 @@ function processBlock(s) {
     '          </div>').join('\n');
   return `
         <div>
-          <h2 class="h2-sub">Как проходит работа</h2>
+          <h2 class="h2-sub">Как мы к этому подходим</h2>
           <div class="audit-steps">
 ${rows}
           </div>
@@ -408,7 +410,7 @@ function seoTextBlock(s) {
     '          <p class="lead" style="max-width:680px;margin-top:10px">' + p + '</p>').join('\n');
   return `
         <div>
-          <h2 class="h2-sub" style="margin-bottom:8px">Подробнее об услуге</h2>
+          <h2 class="h2-sub" style="margin-bottom:8px">Что это даёт клинике</h2>
 ${paras}
         </div>`;
 }
@@ -455,32 +457,33 @@ function servicePageMain(s) {
       <div class="benefits_content">
         <div style="text-align:center">
           <div class="card-visual service-visual" aria-hidden="true"><img src="${serviceImage(s)}" alt="" width="800" height="600" fetchpriority="high"></div>
+          <div class="kicker">${catLabel(s.cat)}</div>
           <h1 class="h1-inner">${s.title}</h1>
           <p class="lead" style="margin:14px auto 0">${s.pain || s.teaser}</p>
         </div>
         <div>
-          <h2 class="h2-sub">Что входит</h2>
+          <h2 class="h2-sub">Какие задачи помогаем решать</h2>
           <div class="audit-steps">
 ${stepRows(s.includes)}
           </div>
-        </div>
+        </div>${processBlock(s)}${seoTextBlock(s)}
         <div>
-          <h2 class="h2-sub" style="margin-bottom:10px">Для кого</h2>
+          <h2 class="h2-sub" style="margin-bottom:10px">Когда это актуально</h2>
           <p class="lead">${s.forWhom || ''}</p>
-        </div>${processBlock(s)}${seoTextBlock(s)}${faqBlock(s)}
+        </div>${faqBlock(s)}
         <div>
-          <div style="text-align:center"><h2 class="h2-sub">Смежные услуги</h2></div>
+          <div style="text-align:center"><h2 class="h2-sub">Смежные задачи</h2></div>
           <div class="product-grid diag-grid">
 ${relatedServices(s).map(cardHTML).join('\n')}
           </div>
         </div>
         <div style="text-align:center">
-          <p class="pc-sub" style="max-width:520px;margin:0 auto 18px">Стоимость обсуждается индивидуально — зависит от размера клиники и объёма работ.</p>
+          <p class="lead" style="max-width:620px;margin:0 auto 22px">Мы не продаём это «с полки». Такие задачи закрываем в сопровождении — после диагностики и аудита, когда видно, что именно усилит вашу клинику.</p>
           <div class="hero-cta" style="justify-content:center">
-            <a class="btn btn--dark" href="/contacts">Оставить заявку
+            <a class="btn btn--dark" href="/diagnostika">Пройти экспресс-диагностику
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a class="btn" href="/diagnostika">Пройти экспресс-диагностику</a>
+            <a class="btn" href="/contacts">Обсудить задачу</a>
           </div>
         </div>
       </div>
