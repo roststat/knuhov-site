@@ -1,0 +1,208 @@
+/* =========================================================================
+   Kontur-style редизайн knuhov.ru — КЛОН для сравнения.
+   Самодостаточный CSS (не зависит от /styles.css). Дизайн-система срисована
+   с kontur.ru: плотные жирные заголовки, bento-сетка, кнопки-пилюли 100px,
+   цветные акцентные плитки поверх строгого монохромного каркаса.
+   Бренд-акценты — из палитры Кнухова (красный/синий/зелёный/янтарь).
+   ========================================================================= */
+
+/* ---- Шрифт: Golos Text (кириллический геометрический гротеск, замена Lab Grotesque) ---- */
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap');
+
+:root{
+  /* Монохромный каркас */
+  --ink:#151515;          /* near-black — текст, кнопки, тёмные секции */
+  --ink-soft:#222222;     /* основной текст на светлом */
+  --paper:#ffffff;
+  --muted:#858585;
+  --muted-2:rgba(0,0,0,.48);
+  --surface:#f4f5f6;      /* светлый фон секций / плиток */
+  --hair:rgba(0,0,0,.10);
+  --hair-dark:rgba(255,255,255,.14);
+
+  /* Цветные акценты — бренд Кнухова */
+  --red:#d02026;
+  --blue:#2563eb;
+  --blue-lite:#2291ff;
+  --green:#1f9d55;
+  --teal:#00bea2;
+  --amber:#e0a526;
+
+  /* Радиусы — как у Контура: карточки 12, пилюли 100 */
+  --r-card:12px;
+  --r-lg:20px;
+  --r-pill:100px;
+
+  --maxw:1128px;
+  --header-h:76px;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Golos Text',-apple-system,system-ui,Arial,sans-serif;
+  font-size:18px; line-height:1.5;
+  color:var(--ink-soft); background:var(--paper);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--ink);color:#fff}
+
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+
+/* ===== Типографика ===== */
+h1,h2,h3{font-weight:700;letter-spacing:-.02em}
+h1{font-size:clamp(40px,6vw,64px);line-height:1.02}
+h2{font-size:clamp(30px,4vw,44px);line-height:1.08}
+h3{font-size:22px;line-height:1.25;font-weight:600}
+.lead{font-size:20px;line-height:1.5;color:var(--muted-2);font-weight:400;max-width:560px}
+.kicker{display:inline-block;font-size:14px;font-weight:600;color:var(--muted);
+  letter-spacing:.02em;margin-bottom:16px}
+section{padding:96px 0}
+
+/* ===== Кнопки — пилюли ===== */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 17px/1 'Golos Text',sans-serif;
+  padding:15px 26px;border-radius:var(--r-pill);border:1.5px solid transparent;cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s,transform .12s;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn svg{flex:none;transition:transform .18s}
+.btn:hover svg{transform:translateX(3px)}
+.btn--primary{background:var(--ink);color:#fff}
+.btn--primary:hover{background:#000}
+.btn--ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.btn--ghost-lite{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.btn--ghost-lite:hover{background:#fff;color:var(--ink)}
+.btn--white{background:#fff;color:var(--ink)}
+.btn--white:hover{background:var(--surface)}
+.btn--lg{padding:18px 32px;font-size:18px}
+
+/* ===== Шапка ===== */
+.hdr{position:sticky;top:0;z-index:100;background:var(--ink);color:#fff}
+.hdr .container{height:var(--header-h);display:flex;align-items:center;gap:32px}
+.logo{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.logo .logo-dr{color:var(--red)}
+.hdr-nav{display:flex;align-items:center;gap:32px;margin-left:auto}
+.hdr-nav a{font-size:16px;font-weight:500;color:rgba(255,255,255,.85)}
+.hdr-nav a:hover{color:#fff}
+.hdr-cta{margin-left:8px}
+.burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;
+  align-items:center;justify-content:center;background:none;border:none;cursor:pointer;margin-left:auto}
+.burger span{width:22px;height:2px;background:#fff;transition:.2s}
+
+/* ===== Hero (тёмный, bento) ===== */
+.hero{background:var(--ink);color:#fff;padding:56px 0 24px}
+.hero h1{max-width:760px}
+.hero-lead{margin-top:22px;max-width:600px;font-size:20px;color:rgba(255,255,255,.72)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+
+/* Bento-сетка направлений */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px;padding-bottom:56px}
+.tile{position:relative;border-radius:var(--r-card);padding:26px;min-height:230px;
+  display:flex;flex-direction:column;overflow:hidden;transition:transform .2s}
+.tile:hover{transform:translateY(-4px)}
+.tile h3{font-size:24px;font-weight:700;margin-bottom:10px}
+.tile p{font-size:15px;line-height:1.45;opacity:.85}
+.tile .tile-arrow{margin-top:auto;align-self:flex-end}
+.tile .tile-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tile-tag{font-size:13px;font-weight:500;padding:5px 12px;border-radius:var(--r-pill);
+  background:rgba(255,255,255,.22)}
+/* Плитки-акценты */
+.tile--blue{background:linear-gradient(150deg,#2291ff,#2563eb);color:#fff}
+.tile--green{background:linear-gradient(150deg,#26c46a,#1f9d55);color:#fff}
+.tile--amber{background:linear-gradient(150deg,#f0c14b,#e0a526);color:#151515}
+.tile--amber .tile-tag{background:rgba(0,0,0,.12)}
+.tile--dark{background:#232323;color:#fff;border:1px solid var(--hair-dark)}
+.tile--wide{grid-column:span 2}
+.tile-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;
+  font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.85;margin-bottom:14px}
+.tile-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+
+/* ===== Секция: манифест-цитата ===== */
+.quote{background:var(--surface)}
+.quote .container{max-width:900px;text-align:center}
+.quote-mark{font-size:64px;font-weight:700;line-height:.5;color:var(--red)}
+.quote p{font-size:clamp(24px,3vw,34px);font-weight:600;line-height:1.3;
+  letter-spacing:-.01em;margin:24px auto 0;max-width:760px}
+.quote .sig{margin-top:28px;font-size:14px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+
+/* ===== Секция: опыт (фото + статы) ===== */
+.trust-top{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:center}
+.trust-photo{border-radius:var(--r-lg);overflow:hidden;background:var(--surface)}
+.trust-photo img{width:100%;aspect-ratio:1;object-fit:cover}
+.trust-cap{margin-top:12px;font-size:14px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px;
+  padding-top:40px;border-top:1px solid var(--hair)}
+.stat b{display:block;font-size:52px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.stat span{display:block;margin-top:10px;font-size:15px;color:var(--muted);max-width:160px}
+
+/* ===== Секция: список кейсов / направлений (карточки на светлом) ===== */
+.head-center{text-align:center;margin-bottom:44px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--surface);border-radius:var(--r-card);padding:24px;
+  display:flex;flex-direction:column;gap:12px;transition:background .18s,transform .18s;min-height:220px}
+.card:hover{transform:translateY(-4px);background:#eceef0}
+.card-tag{align-self:flex-start;font-size:12px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:#fff;padding:5px 12px;border-radius:var(--r-pill)}
+.card-tag--blue{background:var(--blue)}
+.card-tag--green{background:var(--green)}
+.card-tag--amber{background:var(--amber);color:var(--ink)}
+.card-tag--muted{background:var(--muted)}
+.card h3{font-size:22px;font-weight:700}
+.card p{font-size:15px;line-height:1.5;color:var(--muted-2);flex:1}
+.card .card-arrow{color:var(--ink)}
+
+/* ===== Финальный CTA + форма (тёмная карточка) ===== */
+.cta-card{background:var(--ink);color:#fff;border-radius:24px;overflow:hidden}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:64px}
+.cta-grid h2{max-width:420px}
+.cta-grid .lead{color:rgba(255,255,255,.7);margin-top:18px}
+.form-field{margin-bottom:14px}
+.form-field input{width:100%;font:400 17px 'Golos Text',sans-serif;color:var(--ink);
+  background:#fff;border:1.5px solid transparent;border-radius:10px;padding:16px 18px}
+.form-field input:focus{outline:none;border-color:var(--blue-lite)}
+.form-consent{display:flex;gap:12px;align-items:flex-start;margin:18px 0 22px;
+  font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+.form-consent input{margin-top:3px;flex:none}
+.cta-card .btn--white{width:100%;justify-content:center;padding:18px}
+
+/* ===== Подвал ===== */
+.ftr{background:#0d0d0d;color:#fff;padding:72px 0 40px}
+.ftr-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;
+  padding-bottom:56px;border-bottom:1px solid var(--hair-dark)}
+.ftr .logo{margin-bottom:20px}
+.ftr-about{color:rgba(255,255,255,.6);font-size:16px;line-height:1.6;max-width:340px}
+.ftr-col h4{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:20px}
+.ftr-col a{display:block;font-size:17px;font-weight:500;color:rgba(255,255,255,.85);margin-bottom:14px}
+.ftr-col a:hover{color:#fff}
+.ftr-bottom{display:flex;gap:16px;flex-wrap:wrap;align-items:center;
+  padding-top:32px;font-size:14px;color:rgba(255,255,255,.45)}
+.ftr-bottom a{color:rgba(255,255,255,.45)}
+.ftr-bottom a:hover{color:#fff}
+.ftr-bottom .dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.3)}
+
+/* ===== Плашка сравнения (только для клона) ===== */
+.compare-bar{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:200;
+  background:var(--ink);color:#fff;border-radius:var(--r-pill);padding:10px 12px 10px 20px;
+  display:flex;align-items:center;gap:14px;font-size:14px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.compare-bar b{font-weight:600}
+.compare-bar a{background:#fff;color:var(--ink);padding:8px 16px;border-radius:var(--r-pill);font-weight:600}
+
+/* ===== Адаптив ===== */
+@media (max-width:900px){
+  .bento,.cards,.stats,.cta-grid,.trust-top,.ftr-top{grid-template-columns:1fr}
+  .tile--wide{grid-column:span 1}
+  .cta-grid{padding:36px}
+  .trust-top{gap:28px}
+  .trust-photo{max-width:280px}
+  .hdr-nav{display:none}
+  .burger{display:flex}
+}
+@media (max-width:560px){
+  section{padding:64px 0}
+  .hero{padding:40px 0 8px}
+}

@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>(function(){try{var t=localStorage.getItem('knuhov_theme');if(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <title>Медицинский консалтинг для клиник — Кнухов консалтинг</title>
 <meta name="description" content="Находим, где клиника теряет деньги, и достраиваем систему роста: диагностика, сопровождение команды и техническая настройка. Бесплатный тест за 2 минуты.">
 <link rel="canonical" href="https://knuhov.ru/">
@@ -19,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -30,16 +29,8 @@
 <!-- ===== Меню ===== -->
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="/#top" aria-label="Dr.Консалтинг — Knuhov.ru">
-      <span class="mark mosaic" aria-hidden="true">
-        <span style="border-radius:8px 0 0 0"></span>
-        <span style="border-radius:0 0 0 8px"></span>
-        <span class="tall" style="border-radius:0 8px 8px 0"></span>
-      </span>
-      <span class="brand-text">
-        <span class="brand-kicker"><span class="brand-dr">Dr.</span>Консалтинг</span>
-        <span class="brand-domain">KNUHOV.RU</span>
-      </span>
+    <a class="brand" href="/#top" aria-label="Dr.Кнухов — Knuhov.ru">
+      <span class="brand-dr">Dr.</span>Кнухов
     </a>
     <nav class="nav" aria-label="Главная навигация">
       <a href="/#top">Главная</a>
@@ -48,10 +39,6 @@
       <a href="/contacts">Контакты</a>
     </nav>
     <div class="header-actions">
-      <button class="theme-toggle" type="button" aria-label="Переключить тёмную тему" aria-pressed="false">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
-      </button>
       <a class="btn btn--sm nav-cta" href="/diagnostika">Экспресс-диагностика</a>
       <button class="nav-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-nav">
         <span></span><span></span><span></span>
@@ -63,26 +50,54 @@
     <a href="/uslugi">Услуги</a>
     <a href="/cases">Кейсы</a>
     <a href="/contacts">Контакты</a>
-    <a class="btn btn--dark" href="/diagnostika">Экспресс-диагностика</a>
+    <a class="btn btn--white" href="/diagnostika">Экспресс-диагностика</a>
   </nav>
 </header>
 
 
 <main id="top">
 
-  <!-- ===== Hero ===== -->
+  <!-- ===== Hero + bento ===== -->
   <section class="hero">
-    <div class="hero-bg hero-bg--art" aria-hidden="true">
-      <img src="/assets/hero-home.svg" alt="" class="hero-bg_img hero-bg_img--art" width="1200" height="900" fetchpriority="high">
-    </div>
     <div class="container">
       <div class="kicker">Кнухов консалтинг</div>
-      <h1>Стратегический рост медицинского бизнеса</h1>
+      <h1>Стратегический рост<br>медицинского бизнеса</h1>
       <p class="lead">Помогаем собственникам клиник увидеть, где система теряет деньги, и достроить то, чего не хватает для роста, — диагностика, команда и техника под выручку.</p>
       <div class="hero-cta">
-        <a class="btn btn--dark" href="/uslugi">Смотреть услуги</a>
-        <a class="btn" href="/diagnostika">Пройти экспресс-диагностику
+        <a class="btn btn--white btn--lg" href="/diagnostika">Пройти экспресс-диагностику
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost-lite btn--lg" href="/uslugi">Смотреть услуги</a>
+      </div>
+
+      <div class="bento">
+        <a class="tile tile--blue tile--wide" href="/uslugi#diagnostika">
+          <span class="tile-eyebrow"><span class="dot"></span>Диагностика</span>
+          <h3>Найдите, где клиника теряет деньги</h3>
+          <p>Бесплатный тест на 6 вопросов и стратегический аудит с разбором слабых слоёв системы.</p>
+          <div class="tile-tags">
+            <span class="tile-tag">Тест 2 минуты</span>
+            <span class="tile-tag">Аудит с цифрами</span>
+            <span class="tile-tag">Без регистрации</span>
+          </div>
+        </a>
+        <a class="tile tile--dark" href="/uslugi#soprovozhdenie">
+          <span class="tile-eyebrow"><span class="dot"></span>Сопровождение</span>
+          <h3>Команда и работа с базой</h3>
+          <p>Проектный менеджер, реклама, HR, SMM, тайный покупатель — аутсорс ролей.</p>
+          <span class="tile-arrow"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </a>
+        <a class="tile tile--green" href="/uslugi#tehnicheskie">
+          <span class="tile-eyebrow"><span class="dot"></span>Технические работы</span>
+          <h3>Техника, которая считает деньги</h3>
+          <p>CRM, сквозная аналитика, телефония, рассылки, автообзвоны.</p>
+          <span class="tile-arrow"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </a>
+        <a class="tile tile--amber tile--wide" href="/cases">
+          <span class="tile-eyebrow"><span class="dot"></span>Кейсы</span>
+          <h3>Реальные истории клиник с цифрами результата</h3>
+          <p>Смотрите, как система роста выглядит на практике.</p>
+          <span class="tile-arrow"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
         </a>
       </div>
     </div>
@@ -91,13 +106,9 @@
   <!-- ===== Позиция ===== -->
   <section class="manifesto manifesto--center" id="position">
     <div class="container container--wide">
-      <div class="quote-mark mosaic" aria-hidden="true">
-        <span style="border-radius:8px 0 0 0"></span>
-        <span style="border-radius:0 0 0 8px"></span>
-        <span class="tall" style="border-radius:0 8px 8px 0"></span>
-      </div>
+      <div class="quote-mark" aria-hidden="true"></div>
       <p>«Пациенты чувствуют: заботятся о них или просто обслуживают. Повышайте качество сервиса — и вас ждёт успех».</p>
-      <p class="sig">— ИСЛАМ КНУХОВ</p>
+      <p class="sig">Ислам Кнухов</p>
     </div>
   </section>
 
@@ -109,6 +120,7 @@
         <p class="trust-caption">Ислам Кнухов</p>
       </div>
       <div class="trust-body">
+        <div class="kicker">Об эксперте</div>
         <h2>Личный опыт, а не методичка</h2>
         <p class="lead">Все рекомендации — из реальной практики в клиниках, а не из методичек.</p>
       </div>
@@ -121,7 +133,7 @@
   </section>
 
   <!-- ===== Кейсы ===== -->
-  <section class="benefits" id="cases-teaser">
+  <section class="benefits" id="cases-teaser" style="background:var(--surface)">
     <div class="container container--wide">
       <div class="benefits_content">
         <div style="text-align:center">
@@ -129,64 +141,26 @@
           <h2>С кем уже работали</h2>
         </div>
         <div class="product-grid diag-grid">
-          <a class="product-card" href="/case-1">
-            <div class="card-visual" aria-hidden="true"><span class="bi-dot"></span></div>
+          <a class="product-card" href="/case-1" style="background:#fff">
             <div class="pc-body">
               <span class="pc-tag">Скоро</span>
               <h3>Готовим кейс</h3>
               <p class="pc-sub">Реальная история клиники с цифрами результата — опубликуем после согласования.</p>
             </div>
           </a>
-          <a class="product-card" href="/case-2">
-            <div class="card-visual" aria-hidden="true"><span class="bi-dot"></span></div>
+          <a class="product-card" href="/case-2" style="background:#fff">
             <div class="pc-body">
               <span class="pc-tag">Скоро</span>
               <h3>Готовим кейс</h3>
               <p class="pc-sub">Реальная история клиники с цифрами результата — опубликуем после согласования.</p>
             </div>
           </a>
-        </div>
-        <div style="text-align:center">
-          <a class="btn" href="/cases">Все кейсы
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Три направления ===== -->
-  <section class="benefits" id="directions-hub">
-    <div class="container container--wide">
-      <div class="benefits_content">
-        <div style="text-align:center">
-          <div class="kicker">Услуги</div>
-          <h2>Три направления консалтинга</h2>
-        </div>
-        <div class="product-grid diag-grid">
-          <a class="product-card" href="/uslugi#diagnostika">
-            <div class="card-visual" aria-hidden="true"><span class="bi-dot"></span></div>
+          <a class="product-card" href="/cases" style="background:var(--ink);color:#fff">
             <div class="pc-body">
-              <span class="pc-tag">Диагностика</span>
-              <h3>Найдите, где клиника теряет деньги</h3>
-              <p class="pc-sub">Бесплатный тест и стратегический аудит с разбором слабых слоёв системы.</p>
+              <h3 style="color:#fff">Все кейсы</h3>
+              <p class="pc-sub" style="color:rgba(255,255,255,.65)">Смотреть весь список историй внедрений.</p>
             </div>
-          </a>
-          <a class="product-card" href="/uslugi#soprovozhdenie">
-            <div class="card-visual" aria-hidden="true"><span class="bi-dot"></span></div>
-            <div class="pc-body">
-              <span class="pc-tag">Сопровождение</span>
-              <h3>Команда и работа с базой</h3>
-              <p class="pc-sub">Работа с базой и аутсорс ролей: проектный менеджер, реклама, HR, SMM, тайный покупатель.</p>
-            </div>
-          </a>
-          <a class="product-card" href="/uslugi#tehnicheskie">
-            <div class="card-visual" aria-hidden="true"><span class="bi-dot"></span></div>
-            <div class="pc-body">
-              <span class="pc-tag">Технические работы</span>
-              <h3>Техника, которая считает деньги</h3>
-              <p class="pc-sub">Настройка CRM, сквозная аналитика, телефония, рассылки, автообзвоны.</p>
-            </div>
+            <span class="pc-arrow" style="color:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </a>
         </div>
       </div>
@@ -198,7 +172,7 @@
     <div class="container container--wide" style="text-align:center">
       <h2>Готовы узнать, где теряете вы?</h2>
       <p class="lead" style="margin:14px auto 28px">Бесплатный тест на 6 вопросов — 2 минуты, без регистрации.</p>
-      <a class="btn" href="/diagnostika">Пройти экспресс-диагностику
+      <a class="btn btn--white btn--lg" href="/diagnostika">Пройти экспресс-диагностику
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
@@ -208,28 +182,19 @@
 
 <!-- ===== Подвал ===== -->
 <footer class="footer">
-  <div class="container container--wide footer-body">
+  <div class="container footer-body">
     <div class="footer-col footer-col--about">
-      <a class="brand brand--footer" href="/#top" aria-label="Dr.Консалтинг — Knuhov.ru">
-        <span class="mark mark--light mosaic" aria-hidden="true">
-          <span style="border-radius:8px 0 0 0"></span>
-          <span style="border-radius:0 0 0 8px"></span>
-          <span class="tall" style="border-radius:0 8px 8px 0"></span>
-        </span>
-        <span class="brand-text">
-          <span class="brand-kicker brand-kicker--light"><span class="brand-dr">Dr.</span>Консалтинг</span>
-          <span class="brand-domain brand-domain--light">KNUHOV.RU</span>
-        </span>
+      <a class="brand brand--footer" href="/#top" aria-label="Dr.Кнухов — Knuhov.ru">
+        <span class="brand-dr">Dr.</span>Кнухов
       </a>
       <p>Стратегический рост медицинского бизнеса. Находим, где клиника теряет деньги, и достраиваем систему.</p>
       <p class="footer-thanks">Спасибо команде, которая внедряет это в клиниках.</p>
       <a class="big-link" href="/diagnostika">
-        <span class="bl-line">Пройти</span><br>
-        <span class="bl-line">диагностику</span>
+        <span class="bl-line">Пройти диагностику</span>
       </a>
     </div>
-    <div class="footer-col footer-col--right">
     <div class="footer-col footer-col--nav">
+      <h4>Разделы</h4>
       <nav class="fnav" aria-label="Навигация">
         <a href="/#top">Главная</a>
         <a href="/uslugi">Услуги</a>
@@ -242,18 +207,20 @@
         <a href="#" aria-label="YouTube"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c-.3-1-1-1.8-2-2C19 5 12 5 12 5s-7 0-9 .5c-1 .3-1.8 1-2 2C.5 9.4.5 12 .5 12s0 2.6.5 4.5c.3 1 1 1.8 2 2C5 19 12 19 12 19s7 0 9-.5c1-.3 1.8-1 2-2 .5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>
       </div>
     </div>
-    <a class="btn help" href="https://crm.knuhov.ru" target="_blank" rel="noopener noreferrer">Войти в Автозаботу
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-    <a class="btn help" href="/contacts" style="margin-top:16px">Help &amp; Support
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <div class="footer-col footer-col--links">
+      <h4>Сервис</h4>
+      <nav class="fnav" aria-label="Сервис">
+        <a href="https://crm.knuhov.ru" target="_blank" rel="noopener noreferrer">Войти в Автозаботу</a>
+        <a href="/contacts">Help &amp; Support</a>
+        <a href="/diagnostika">Экспресс-диагностика</a>
+      </nav>
     </div>
   </div>
-  <div class="container container--wide footer-bottom">
-    <a href="#" style="text-decoration:none">Политика конфиденциальности</a><span class="sqdot"></span>
-    <a href="/#top" style="text-decoration:none">Наверх</a><span class="sqdot"></span>
-    <a href="#" style="text-decoration:none">Условия</a>
+  <div class="container footer-bottom">
+    <a href="#">Политика конфиденциальности</a><span class="sqdot"></span>
+    <a href="/#top">Наверх</a><span class="sqdot"></span>
+    <a href="#">Условия</a><span class="sqdot"></span>
+    <span>© Кнухов консалтинг</span>
   </div>
 </footer>
 
