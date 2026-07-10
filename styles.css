@@ -31,7 +31,7 @@
   --r-xl:24px;
   --r-pill:100px;
 
-  --maxw:1128px;
+  --maxw:1200px;
   --header-h:76px;
   color-scheme:light;
 }
@@ -40,7 +40,7 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Golos Text',-apple-system,system-ui,Arial,sans-serif;
-  font-size:18px; line-height:1.5;
+  font-size:19px; line-height:1.5;
   color:var(--ink-soft); background:var(--paper);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   padding-top:var(--header-h);
@@ -51,26 +51,26 @@ img{display:block;max-width:100%}
 a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
-.container--wide{max-width:1200px}
+.container--wide{max-width:var(--maxw)}
 section{padding:96px 0}
 
 /* ===== Типографика ===== */
 h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:1.08}
-h1{font-size:clamp(40px,6vw,64px);line-height:1.02}
-h2{font-size:clamp(30px,4vw,44px)}
-h3{font-size:22px;font-weight:600;line-height:1.25}
-.h1-inner{font-size:clamp(32px,4.4vw,46px)}
-.h2-sub{font-size:22px;font-weight:600}
+h1{font-size:clamp(40px,6.4vw,68px);line-height:1.02;overflow-wrap:break-word}
+h2{font-size:clamp(31px,4.3vw,48px)}
+h3{font-size:23px;font-weight:600;line-height:1.25}
+.h1-inner{font-size:clamp(32px,4.6vw,49px)}
+.h2-sub{font-size:23px;font-weight:600}
 p{font-weight:400}
-.lead{font-size:20px;line-height:1.5;color:var(--muted-2);max-width:560px}
-.kicker{display:inline-block;font-size:14px;font-weight:600;letter-spacing:.02em;
+.lead{font-size:21px;line-height:1.5;color:var(--muted-2);max-width:560px}
+.kicker{display:inline-block;font-size:15px;font-weight:600;letter-spacing:.02em;
   color:var(--muted);margin-bottom:14px}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600}
 .sqdot{width:4px;height:4px;border-radius:50%;background:currentColor;display:inline-block;flex:none}
 .subhead{margin-top:40px;margin-bottom:4px}
 
 /* ===== Кнопки — пилюли ===== */
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 17px/1 'Golos Text',sans-serif;
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 18px/1 'Golos Text',sans-serif;
   padding:15px 26px;border-radius:var(--r-pill);border:1.5px solid var(--ink);cursor:pointer;
   background:transparent;color:var(--ink);
   transition:background .18s,color .18s,border-color .18s,transform .12s;white-space:nowrap}
@@ -84,17 +84,17 @@ p{font-weight:400}
 .btn--white:hover{background:var(--surface);border-color:var(--surface)}
 .btn--ghost-lite{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
 .btn--ghost-lite:hover{background:#fff;color:var(--ink)}
-.btn--sm{padding:10px 18px;font-size:15px}
-.btn--lg{padding:18px 32px;font-size:18px}
+.btn--sm{padding:10px 18px;font-size:16px}
+.btn--lg{padding:18px 32px;font-size:19px}
 
 /* ===== Шапка (тёмная, sticky) ===== */
 .site-header{position:fixed;top:0;left:0;width:100%;height:var(--header-h);z-index:100;
   background:var(--ink);color:#fff;display:flex;align-items:center}
-.site-header .container{max-width:none;display:flex;align-items:center;gap:32px;padding:0 32px}
+.site-header .container{display:flex;align-items:center;gap:32px}
 .brand{display:flex;align-items:center;gap:2px;font-size:24px;font-weight:700;letter-spacing:-.02em;color:#fff}
 .brand-dr{color:var(--red)}
 .nav{display:flex;align-items:center;gap:30px;margin-left:auto}
-.nav a{font-size:16px;font-weight:500;color:rgba(255,255,255,.82)}
+.nav a{font-size:17px;font-weight:500;color:rgba(255,255,255,.82)}
 .nav a:hover{color:#fff}
 .header-actions{display:flex;align-items:center;gap:12px}
 .nav-cta{border-color:rgba(255,255,255,.35);color:#fff}
@@ -142,8 +142,8 @@ p{font-weight:400}
 .tile{position:relative;border-radius:var(--r-card);padding:26px;min-height:230px;
   display:flex;flex-direction:column;overflow:hidden;transition:transform .2s}
 .tile:hover{transform:translateY(-4px)}
-.tile h3{font-size:24px;font-weight:700;margin-bottom:10px;line-height:1.15}
-.tile p{font-size:15px;line-height:1.45;opacity:.9}
+.tile h3{font-size:26px;font-weight:700;margin-bottom:10px;line-height:1.15}
+.tile p{font-size:16px;line-height:1.45;opacity:.9}
 .tile-arrow{margin-top:auto;align-self:flex-end}
 .tile-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .tile-tag{font-size:13px;font-weight:500;padding:5px 12px;border-radius:var(--r-pill);background:rgba(255,255,255,.22)}
@@ -203,9 +203,9 @@ p{font-weight:400}
   display:flex;flex-direction:column;gap:12px;color:inherit;min-height:210px;
   transition:background .18s,transform .18s}
 .product-card:hover{background:#eceef0;transform:translateY(-4px);color:inherit}
-.product-card h3{font-size:22px;font-weight:700;line-height:1.2}
-.product-card .pc-sub{color:var(--muted-2);font-size:15px;line-height:1.5;flex:1}
-.product-card .pc-price{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.product-card h3{font-size:23px;font-weight:700;line-height:1.2}
+.product-card .pc-sub{color:var(--muted-2);font-size:16px;line-height:1.5;flex:1}
+.product-card .pc-price{font-size:26px;font-weight:700;letter-spacing:-.02em}
 .pc-body{flex:1;display:flex;flex-direction:column;gap:8px}
 .pc-tag{display:inline-flex;align-self:flex-start;background:var(--ink);color:#fff;
   font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
@@ -221,7 +221,7 @@ p{font-weight:400}
 
 /* ===== Каталог: фильтры-чипсы ===== */
 .catalog-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.catalog-chip{font:500 15px 'Golos Text',sans-serif;padding:10px 20px;border-radius:var(--r-pill);
+.catalog-chip{font:500 16px 'Golos Text',sans-serif;padding:10px 20px;border-radius:var(--r-pill);
   border:1.5px solid var(--hair);background:#fff;color:var(--ink);cursor:pointer;
   transition:background .18s,color .18s,border-color .18s}
 .catalog-chip:hover{border-color:var(--ink)}
@@ -280,7 +280,7 @@ p{font-weight:400}
 .faq-list{max-width:720px;margin:24px auto 0;display:flex;flex-direction:column;gap:10px;width:100%}
 .faq-item{background:var(--surface);border-radius:var(--r-card)}
 .faq-item summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
-  align-items:center;gap:16px;padding:18px 20px;font-weight:600;font-size:17px}
+  align-items:center;gap:16px;padding:18px 20px;font-weight:600;font-size:18px}
 .faq-item summary::-webkit-details-marker{display:none}
 .faq-item summary::after{content:"+";font-size:22px;line-height:1;color:var(--muted);flex:none}
 .faq-item[open] summary::after{content:"−"}
@@ -426,7 +426,7 @@ body.popup-locked{overflow:hidden}
 .footer-body{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;
   padding-bottom:56px;border-bottom:1px solid var(--hair-dark)}
 .brand--footer{margin-bottom:20px}
-.footer-col--about p{color:rgba(255,255,255,.6);font-size:16px;line-height:1.6;max-width:340px;margin-bottom:14px}
+.footer-col--about p{color:rgba(255,255,255,.6);font-size:17px;line-height:1.6;max-width:340px;margin-bottom:14px}
 .footer-thanks{font-size:15px;color:rgba(255,255,255,.4)}
 .big-link{display:inline-block;margin-top:20px;color:#fff}
 .bl-line{display:inline-block;font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.08;
@@ -435,7 +435,7 @@ body.popup-locked{overflow:hidden}
 .footer-col--nav{display:flex;flex-direction:column}
 .footer-col--nav h4,.ftr-col h4{font-size:14px;font-weight:600;letter-spacing:.06em;
   text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px}
-.fnav{display:flex;flex-direction:column;gap:14px;font-size:17px;font-weight:500}
+.fnav{display:flex;flex-direction:column;gap:14px;font-size:18px;font-weight:500}
 .fnav a{color:rgba(255,255,255,.85)}
 .fnav a:hover{color:#fff}
 .social{display:flex;gap:16px;margin-top:28px}
@@ -472,6 +472,10 @@ body.popup-locked{overflow:hidden}
   section{padding:64px 0}
   .hero{padding:40px 0 0}
   #final-cta .container{padding:44px 24px}
+  /* CTA на всю ширину, длинный текст переносится, а не вылезает за экран */
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .btn{white-space:normal;text-align:center}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
