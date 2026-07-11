@@ -498,7 +498,6 @@ function servicePageMain(s) {
             <div class="kicker">${catLabel(s.cat)}</div>
             <h1 class="h1-inner">${s.title}</h1>
             <p class="lead">${s.pain || s.teaser}</p>
-            <div class="card-visual svc-hero_img" aria-hidden="true"><img src="${serviceImage(s)}" alt="" width="800" height="600" fetchpriority="high"></div>
           </header>
           <div>
             <h2 class="h2-sub">Какие задачи помогаем решать</h2>
