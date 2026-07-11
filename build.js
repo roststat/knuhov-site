@@ -284,6 +284,18 @@ function cardHTML(s) {
     '          </a>';
 }
 
+/* Горизонтальная карточка услуги (блок «Сопровождение» на главной) */
+function hcardHTML(s) {
+  return '        <a class="hcard" href="' + serviceHref(s) + '">\n' +
+    '          <div class="hcard-img" aria-hidden="true"><img src="' + serviceImage(s) + '" alt="" width="800" height="600" loading="lazy"></div>\n' +
+    '          <div class="hcard-body"><h3>' + s.title + '</h3><p>' + s.teaser + '</p></div>\n' +
+    '          <span class="hcard-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>\n' +
+    '        </a>';
+}
+function soproCardsHTML() {
+  return SERVICES.filter(function (s) { return s.cat === 'soprovozhdenie' && s.slug; }).map(hcardHTML).join('\n');
+}
+
 function cardsHTML() { return SERVICES.map(cardHTML).join('\n'); }
 
 /* ===== Партиалы и шаблон head ===== */
@@ -380,8 +392,10 @@ for (const file of pages) {
 
   // Каталог: подставляем сгенерированные фильтры и карточки
   main = main.replace('<!--CHIPS-->', chipsHTML()).replace('<!--CARDS-->', cardsHTML());
-  // Попап-тест: подставляем общий партиал по маркеру (страница диагностики)
+  // Попап-тест: подставляем общий партиал по маркеру (страница диагностики, главная)
   main = main.replace('<!--DIAGNOSTIC-POPUP-->', diagnosticPopup);
+  // Блок «Сопровождение» на главной: горизонтальные карточки услуг
+  main = main.replace('<!--SOPRO-CARDS-->', soproCardsHTML());
 
   // 404 собирается без canonical/OG (urlPath = null) и не попадает в sitemap
   const urlPath = file === '404.html' ? null : canonicalPath(file);
@@ -498,6 +512,7 @@ function servicePageMain(s) {
             <div class="kicker">${catLabel(s.cat)}</div>
             <h1 class="h1-inner">${s.title}</h1>
             <p class="lead">${s.pain || s.teaser}</p>
+            <div class="card-visual svc-hero_img" aria-hidden="true"><img src="${serviceImage(s)}" alt="" width="800" height="600" fetchpriority="high"></div>
           </header>
           <div>
             <h2 class="h2-sub">Какие задачи помогаем решать</h2>
